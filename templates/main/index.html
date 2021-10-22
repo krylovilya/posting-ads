@@ -1,19 +1,10 @@
-{% load flatpages %}
-{% get_flatpages as flatpages %}
+{% extends "main/base.html" %}
 
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% block title %}Сайт{% endblock %}
 
-<ul>
-    {% for page in flatpages %}
-        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
-    {% endfor %}
-</ul>
+{% block content %}
+    <p class="lead">
+        Содержимое главной страницы
+    </p>
+{% endblock %}
 
-</body>
-</html>
