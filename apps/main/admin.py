@@ -4,6 +4,8 @@ from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
 from django.db import models
 
+from apps.main.models import Ad, Category, Seller, Tag
+
 
 class CustomFlatPageAdmin(FlatPageAdmin):
     """Добавление wysiwyg редактора из ckeditor к простым страницам."""
@@ -17,3 +19,8 @@ class CustomFlatPageAdmin(FlatPageAdmin):
 
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, CustomFlatPageAdmin)
+
+admin.site.register(Ad)
+admin.site.register(Category)
+admin.site.register(Seller)
+admin.site.register(Tag)
