@@ -9,8 +9,8 @@ class Seller(models.Model):
     user = models.OneToOneField(to=User, verbose_name="пользователь", on_delete=models.CASCADE, related_name='seller')
 
     @property
-    def count_sellers_ads(self):
-        return 0
+    def num_ads(self):
+        return self.ads.count()
 
     def __str__(self):
         return self.user.username
@@ -63,7 +63,7 @@ class Ad(models.Model):
     tags = models.ManyToManyField(to=Tag, verbose_name='тэги', related_name='ads')
 
     def __str__(self):
-        return f'self.title [{self.seller.user}]'
+        return f'{self.title} [{self.seller.user}]'
 
     class Meta:
         verbose_name = 'объявление'

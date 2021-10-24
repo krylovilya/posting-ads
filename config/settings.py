@@ -26,6 +26,11 @@ LOCAL_APPS = [
 
 INSTALLED_APPS += LOCAL_APPS
 
+LOCAL_MIGRATIONS = [app_path.split('.')[1] for app_path in LOCAL_APPS]
+MIGRATION_PATH = 'config.migrations.'
+MIGRATION_MODULES = {app_name: MIGRATION_PATH + app_name for app_name in LOCAL_MIGRATIONS}
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
