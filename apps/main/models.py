@@ -61,6 +61,7 @@ class Ad(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='дата создания')
     update_date = models.DateTimeField(auto_now=True, verbose_name='дата изменения')
     tags = models.ManyToManyField(to=Tag, verbose_name='тэги', related_name='ads')
+    price = models.PositiveIntegerField(verbose_name='цена', default=0)
 
     def __str__(self):
         return f'{self.title} [{self.seller.user}]'
