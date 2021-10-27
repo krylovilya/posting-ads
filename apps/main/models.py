@@ -3,6 +3,15 @@ from django.db import models
 from django.utils.text import slugify
 
 
+class BaseModel(models.Model):
+    name = models.CharField(max_length=128)
+    creation_date = models.DateTimeField(auto_now_add=True, verbose_name='дата создания')
+    update_date = models.DateTimeField(auto_now=True, verbose_name='дата изменения')
+
+    class Meta:
+        abstract = True
+
+
 class Seller(models.Model):
     """Модель Продавец."""
 
@@ -20,7 +29,7 @@ class Seller(models.Model):
         verbose_name_plural = 'продавцы'
 
 
-class Category(models.Model):
+class Category(BaseModel):
     """Модель Категория."""
 
     title = models.CharField(verbose_name='заголовок категории', max_length=128, unique=True)
@@ -38,7 +47,7 @@ class Category(models.Model):
         verbose_name_plural = 'категории'
 
 
-class Tag(models.Model):
+class Tag(BaseModel):
     """Модель Тэг."""
 
     title = models.CharField(verbose_name='заголовок тэга', max_length=128)
@@ -51,17 +60,16 @@ class Tag(models.Model):
         verbose_name_plural = 'тэги'
 
 
-class Ad(models.Model):
+class Ad(BaseModel):
     """Модель Объявление."""
 
     title = models.CharField(verbose_name='заголовок объявления', max_length=128)
     description = models.CharField(verbose_name='описание объявления', max_length=2048, null=True)
     category = models.ForeignKey(to=Category, verbose_name='категория', on_delete=models.CASCADE, related_name='ads')
     seller = models.ForeignKey(to=Seller, verbose_name='продавец', on_delete=models.CASCADE, related_name='ads')
-    creation_date = models.DateTimeField(auto_now_add=True, verbose_name='дата создания')
-    update_date = models.DateTimeField(auto_now=True, verbose_name='дата изменения')
     tags = models.ManyToManyField(to=Tag, verbose_name='тэги', related_name='ads')
     price = models.PositiveIntegerField(verbose_name='цена', default=0)
+    archive = models.BooleanField(verbose_name='в архиве', default=False)
 
     def __str__(self):
         return f'{self.title} [{self.seller.user}]'
@@ -69,3 +77,19 @@ class Ad(models.Model):
     class Meta:
         verbose_name = 'объявление'
         verbose_name_plural = 'объявления'
+
+
+class ArchiveAdsManager(models.Manager):
+    """Менеджер, возвращающий архивные объявления."""
+
+    def get_queryset(self):
+        return Ad.objects.filter(archive=True)
+
+
+class ArchiveAds(Ad):
+    """Прокси-модель для архивных объявлений."""
+
+    class Meta:
+        proxy = True
+
+    archive = ArchiveAdsManager()
