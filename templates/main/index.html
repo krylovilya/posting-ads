@@ -3,8 +3,12 @@
 {% block title %}Сайт{% endblock %}
 
 {% block content %}
-    <p class="lead">
-        Содержимое главной страницы
-    </p>
+    {% if turn_on_block %}
+        <div style="text-align: center">На сайте проводятся технические работы</div>
+    {% else %}
+        <p class="lead">
+            Содержимое главной страницы
+        </p>
+    {% endif %}
 {% endblock %}
 
