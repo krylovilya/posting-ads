@@ -1,0 +1,22 @@
+{% extends "main/base.html" %}
+
+{% block title %}Объявления{% endblock %}
+
+{% block content %}
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Заголовок</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ad in ads %}
+            <tr>
+                <th scope="row">{{ ad.id }}</th>
+                <td><a href="/ads/{{ ad.id }}/">{{ ad.title }}</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
