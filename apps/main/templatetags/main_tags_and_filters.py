@@ -15,3 +15,11 @@ def number_of_user_notifications():
 @stringfilter
 def string_inversion(value):
     return value[::-1]
+
+
+@register.filter
+@stringfilter
+def save_tag_in_url(tag_name):
+    if not tag_name:
+        return ''
+    return f'&tag={tag_name}'
