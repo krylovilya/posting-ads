@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
     'ckeditor',
+    'constance',
 ]
 
 LOCAL_APPS = [
@@ -111,3 +112,11 @@ STATICFILES_DIRS = ('static',)
 # Default primary key field type
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Constance settings
+
+CONSTANCE_BACKEND = 'constance.backends.memory.MemoryBackend'
+
+CONSTANCE_CONFIG = {
+    'MAINTENANCE_MODE': (True, str),
+}

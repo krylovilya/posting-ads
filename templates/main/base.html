@@ -30,6 +30,10 @@
                     <li class="nav-item"><a class="nav-link active" aria-current="page"
                                             href="{{ page.url }}">{{ page.title }}</a></li>
                 {% endfor %}
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link active" aria-current="page"
+                                            href="#">Привет, {{ user }}!</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>
