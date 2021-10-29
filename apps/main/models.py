@@ -16,6 +16,7 @@ class Seller(models.Model):
     """Модель Продавец."""
 
     user = models.OneToOneField(to=User, verbose_name="пользователь", on_delete=models.CASCADE, related_name='seller')
+    itn = models.CharField(verbose_name='идентификационный номер налогоплательщика', max_length=10)
 
     @property
     def num_ads(self):
