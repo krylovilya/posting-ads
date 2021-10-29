@@ -21,7 +21,8 @@ def string_inversion(value: str) -> str:
 
 @register.filter
 @stringfilter
-def save_tag_in_url(tag_name):
+def save_tag_in_url(tag_name: str) -> str:
+    """Сохраняет выбранный Тэг во время путешествия по пагинации"""
     if not tag_name:
         return ''
     return f'&tag={tag_name}'
