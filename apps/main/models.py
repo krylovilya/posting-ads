@@ -4,7 +4,7 @@ from django.utils.text import slugify
 
 
 class BaseModel(models.Model):
-    name = models.CharField(max_length=128)
+    # name = models.CharField(max_length=128)
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='дата создания')
     update_date = models.DateTimeField(auto_now=True, verbose_name='дата изменения')
 

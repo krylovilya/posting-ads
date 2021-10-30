@@ -2,7 +2,7 @@ from constance import config
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseRedirect
-from django.views.generic import DetailView, ListView, UpdateView
+from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from django.views.generic.base import TemplateView
 
 from apps.main.forms import SellerForm, UserForm
@@ -73,3 +73,29 @@ class SellerUpdateView(LoginRequiredMixin, UpdateView):
         user_form.save()
         seller_form.save()
         return HttpResponseRedirect(self.get_success_url())
+
+
+class AdCreateView(CreateView):
+    model = Ad
+    fields = ('title', 'description', 'category', 'tags', 'price')
+    template_name = 'main/ad_create.html'
+    success_url = '/?ad_create_success=1'
+
+    def form_valid(self, form):
+        seller = Seller.objects.filter(user=self.request.user).first()
+        form.instance.seller = seller
+        return super().form_valid(form)
+
+
+class AdUpdateView(UpdateView):
+    model = Ad
+    fields = ('title', 'description', 'category', 'tags', 'price')
+    template_name = 'main/ad_update.html'
+    success_url = '/?ad_update_success=1'
+
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset)
+        seller = Seller.objects.filter(user=self.request.user).first()
+        if obj.seller != seller:
+            raise PermissionError('Нет доступа к изменению данного объекта')
+        return obj
