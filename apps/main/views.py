@@ -1,8 +1,12 @@
 from constance import config
-from django.views.generic import DetailView, ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import ValidationError
+from django.http import HttpResponseRedirect
+from django.views.generic import DetailView, ListView, UpdateView
 from django.views.generic.base import TemplateView
 
-from apps.main.models import Ad, Tag
+from apps.main.forms import SellerForm, UserForm
+from apps.main.models import Ad, Seller, Tag
 
 
 class IndexView(TemplateView):
@@ -39,3 +43,33 @@ class AdDetailView(DetailView):
 
     model = Ad
     template_name = "main/ad_detail.html"
+
+
+class SellerUpdateView(LoginRequiredMixin, UpdateView):
+    """Обновление информации об продавце."""
+
+    model = Seller
+    template_name = "main/seller_update.html"
+    success_url = '/?seller_update_success=1'
+    login_url = '/'
+    form_class = SellerForm
+
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()
+        return queryset.filter(user=self.request.user).first()
+
+    def get_context_data(self, **kwargs):
+        kwargs.update({
+            'seller_form': SellerForm(self.request.POST, instance=self.request.user),
+            'user_form': UserForm(self.request.POST, instance=self.get_object()),
+        })
+        return super().get_context_data(**kwargs)
+
+    def form_valid(self, seller_form):
+        user_form = UserForm(self.request.POST, instance=self.request.user)
+        if not user_form.is_valid():
+            raise ValidationError('User form is not valid')
+        user_form.save()
+        seller_form.save()
+        return HttpResponseRedirect(self.get_success_url())
