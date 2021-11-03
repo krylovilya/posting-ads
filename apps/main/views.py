@@ -95,7 +95,7 @@ class AdUpdateView(UpdateView):
 
     def get_object(self, queryset=None):
         obj = super().get_object(queryset)
-        seller = Seller.objects.filter(user=self.request.user).first()
-        if obj.seller != seller:
+        seller = Seller.objects.get(user=self.request.user)
+        if obj.seller.pk != seller.pk:
             raise PermissionError('Нет доступа к изменению данного объекта')
         return obj
