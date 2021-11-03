@@ -9,6 +9,8 @@ python = "^3.10"
 Django = "^3.2.8"
 django-ckeditor = "^6.1.0"
 django-constance = "^2.8.0"
+sorl-thumbnail = "^12.7.0"
+Pillow = "^8.4.0"
 
 [tool.poetry.dev-dependencies]
 

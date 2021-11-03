@@ -1,4 +1,6 @@
 {% load main_tags_and_filters %}
+{% load thumbnail %}
+
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
     <div class="container">
         <a class="navbar-brand" href="/">{{ "Привет, мир!" | string_inversion }}</a>
@@ -15,6 +17,12 @@
                 {% if user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link active" aria-current="page"
                                             href="#">Привет, {{ user }}!</a></li>
+                    <li class="nav-item">
+                        {% thumbnail user.seller.avatar "40x40" crop="center" as im %}
+                            <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}"
+                                 class="rounded-circle">
+                        {% endthumbnail %}
+                    </li>
                 {% endif %}
             </ul>
         </div>
