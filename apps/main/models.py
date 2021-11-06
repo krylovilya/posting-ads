@@ -103,6 +103,8 @@ class ArchiveAds(Ad):
 
 
 class Picture(models.Model):
+    """Модель Изображение объявления."""
+
     ad = models.ForeignKey(to=Ad, verbose_name='объявление', on_delete=models.CASCADE, related_name='pictures')
     image = models.ImageField(verbose_name='изображение объявления', upload_to='ads_pictures')
 

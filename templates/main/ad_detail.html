@@ -1,4 +1,5 @@
 {% extends "main/base.html" %}
+{% load thumbnail %}
 
 {% block title %}{{ object.title }}{% endblock %}
 
@@ -7,5 +8,24 @@
     <h1 class="display-5">{{ object.title }}</h1>
     <p>{{ object.category }}</p>
     <p>{{ object.price }}</p>
+
+    <!-- Ad pictures -->
+    {% if object.pictures.count %}
+        <h1 class="fw-light text-center text-lg-start mt-4 mb-0">Изображения</h1>
+        <hr class="mt-2 mb-5">
+        <div class="row text-center text-lg-start">
+            {% for picture in object.pictures.get_queryset %}
+                {% thumbnail picture.image "400x200" as im %}
+                    <div class="col-lg-3 col-md-4 col-6">
+                        <a href="{{ picture.image.url }}" class="d-block mb-4 h-100">
+                            <img class="img-fluid img-thumbnail" src="{{ im.url }}" width="{{ im.width }}"
+                                 height="{{ im.height }}"
+                                 alt="">
+                        </a>
+                    </div>
+                {% endthumbnail %}
+            {% endfor %}
+        </div>
+    {% endif %}
 
 {% endblock %}

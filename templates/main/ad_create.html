@@ -1,10 +1,14 @@
 {% extends "main/base.html" %}
 
-{% block title %}Добавить объявление{% endblock %}
+{% block title %}{{ page_title }}{% endblock %}
 
 {% block content %}
-    <form method="post">{% csrf_token %}
-        {{ form.as_p }}
+    <form enctype="multipart/form-data" method="post">{% csrf_token %}
+        {{ form.as_p }}<br>
+        {{ image_formset.management_form }}
+        {% for image_form in image_formset %}
+            {{ image_form.as_p }}
+        {% endfor %}<br>
         <input type="submit" value="Save">
     </form>
 {% endblock %}

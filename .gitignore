@@ -5,6 +5,7 @@
 .idea
 static/
 config/migrations/
+setup.cfg
 
 ### Django ###
 *.log
