@@ -63,8 +63,8 @@ class SellerUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         kwargs.update({
-            'seller_form': SellerForm(self.request.POST, instance=self.request.user),
-            'user_form': UserForm(self.request.POST, instance=self.get_object()),
+            'seller_form': SellerForm(self.request.POST, instance=self.get_object()),
+            'user_form': UserForm(self.request.POST, instance=self.request.user),
         })
         return super().get_context_data(**kwargs)
 

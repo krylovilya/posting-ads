@@ -2,6 +2,8 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils.text import slugify
 
+from apps.main.services.validate_itn import validate_itn
+
 
 class BaseModel(models.Model):
     # name = models.CharField(max_length=128)
@@ -16,7 +18,8 @@ class Seller(models.Model):
     """Модель Продавец."""
 
     user = models.OneToOneField(to=User, verbose_name="пользователь", on_delete=models.CASCADE, related_name='seller')
-    itn = models.CharField(verbose_name='идентификационный номер налогоплательщика', max_length=12)
+    itn = models.CharField(verbose_name='идентификационный номер налогоплательщика', max_length=12,
+                           validators=(validate_itn,))
     avatar = models.ImageField(verbose_name='аватар пользователя', upload_to='avatars', default='default.jpg')
 
     @property
