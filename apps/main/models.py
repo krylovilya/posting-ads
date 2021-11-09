@@ -17,7 +17,7 @@ class Seller(models.Model):
 
     user = models.OneToOneField(to=User, verbose_name="пользователь", on_delete=models.CASCADE, related_name='seller')
     itn = models.CharField(verbose_name='идентификационный номер налогоплательщика', max_length=12)
-    avatar = models.ImageField(upload_to='avatars', default='default.jpg')
+    avatar = models.ImageField(verbose_name='аватар пользователя', upload_to='avatars', default='default.jpg')
 
     @property
     def num_ads(self):
@@ -100,3 +100,14 @@ class ArchiveAds(Ad):
         proxy = True
 
     archive = ArchiveAdsManager()
+
+
+class Picture(models.Model):
+    """Модель Изображение объявления."""
+
+    ad = models.ForeignKey(to=Ad, verbose_name='объявление', on_delete=models.CASCADE, related_name='pictures')
+    image = models.ImageField(verbose_name='изображение объявления', upload_to='ads_pictures')
+
+    class Meta:
+        verbose_name = 'изображение объявления'
+        verbose_name_plural = 'изображения объявлений'

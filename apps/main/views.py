@@ -1,11 +1,13 @@
-from constance import config
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseRedirect
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from django.views.generic.base import TemplateView
+from django.views.generic.edit import ModelFormMixin, ProcessFormView
 
-from apps.main.forms import SellerForm, UserForm
+from constance import config
+
+from apps.main.forms import ImageFormset, SellerForm, UserForm
 from apps.main.models import Ad, Seller, Tag
 
 
@@ -75,27 +77,51 @@ class SellerUpdateView(LoginRequiredMixin, UpdateView):
         return HttpResponseRedirect(self.get_success_url())
 
 
-class AdCreateView(CreateView):
+class AdViewMixin(ModelFormMixin, ProcessFormView):
+    """Миксин для отображения форм объявлений."""
+
     model = Ad
     fields = ('title', 'description', 'category', 'tags', 'price')
     template_name = 'main/ad_create.html'
-    success_url = '/?ad_create_success=1'
+    page_title = ''
 
     def form_valid(self, form):
-        seller = Seller.objects.filter(user=self.request.user).first()
+        seller = Seller.objects.get(user=self.request.user)
         form.instance.seller = seller
         return super().form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        kwargs.update({
+            'page_title': self.page_title,
+            'image_formset': ImageFormset(instance=self.object)
+        })
+        return super().get_context_data(**kwargs)
 
-class AdUpdateView(UpdateView):
-    model = Ad
-    fields = ('title', 'description', 'category', 'tags', 'price')
-    template_name = 'main/ad_update.html'
-    success_url = '/?ad_update_success=1'
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, args, kwargs)
+        image_formset = ImageFormset(data=request.POST, files=request.FILES, instance=self.object)
+        if image_formset.is_valid():
+            for image_form in image_formset:
+                image_form.save()
+        return response
 
     def get_object(self, queryset=None):
         obj = super().get_object(queryset)
         seller = Seller.objects.get(user=self.request.user)
         if obj.seller.pk != seller.pk:
-            raise PermissionError('Нет доступа к изменению данного объекта')
+            raise PermissionError('Нет доступа к данному объекту')
         return obj
+
+
+class AdCreateView(AdViewMixin, CreateView):
+    """Отобразить форму создания объявления."""
+
+    page_title = 'Создание объявления'
+    success_url = '/?ad_create_success=1'
+
+
+class AdUpdateView(AdViewMixin, UpdateView):
+    """Отобразить форму редактирования объявления."""
+
+    page_title = 'Редактирование объявления'
+    success_url = '/?ad_update_success=1'
