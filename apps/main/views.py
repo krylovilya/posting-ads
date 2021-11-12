@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ValidationError
-from django.http import HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import ModelFormMixin, ProcessFormView
@@ -99,6 +99,8 @@ class AdViewMixin(ModelFormMixin, LoginRequiredMixin, ProcessFormView):
         return super().get_context_data(**kwargs)
 
     def post(self, request, *args, **kwargs):
+        if request.user.seller.is_banned:
+            raise Http404('У вас недостаточно прав для добавления/изменения объявлений')
         response = super().post(request, args, kwargs)
         image_formset = ImageFormset(data=request.POST, files=request.FILES, instance=self.object)
         if image_formset.is_valid():
@@ -110,7 +112,7 @@ class AdViewMixin(ModelFormMixin, LoginRequiredMixin, ProcessFormView):
         obj = super().get_object(queryset)
         seller = Seller.objects.get(user=self.request.user)
         if obj.seller.pk != seller.pk:
-            raise PermissionError('Нет доступа к данному объекту')
+            raise Http404('Нет доступа к данному объекту')
         return obj
 
 
