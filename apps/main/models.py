@@ -26,6 +26,10 @@ class Seller(models.Model):
     def num_ads(self):
         return self.ads.count()
 
+    @property
+    def is_banned(self):
+        return self.user.groups.filter(name='banned users').exists()
+
     def __str__(self):
         return self.user.username
 
