@@ -4,7 +4,7 @@ from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
 from django.db import models
 
-from apps.main.models import Ad, Category, Seller, Tag, Picture
+from apps.main.models import Ad, Category, Seller, Subscription, Tag, Picture
 
 
 class CustomFlatPageAdmin(FlatPageAdmin):
@@ -31,3 +31,4 @@ admin.site.register(Category)
 admin.site.register(Seller, CustomSellerAdmin)
 admin.site.register(Picture)
 admin.site.register(Tag)
+admin.site.register(Subscription)
