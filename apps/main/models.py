@@ -118,3 +118,14 @@ class Picture(models.Model):
     class Meta:
         verbose_name = 'изображение объявления'
         verbose_name_plural = 'изображения объявлений'
+
+
+class Subscription(models.Model):
+    """Подписки на объявления."""
+
+    title = models.CharField(verbose_name='заголовок подписки', max_length=128)
+    user = models.ManyToManyField(to=User, verbose_name='пользователи', related_name='users')
+
+    class Meta:
+        verbose_name = 'подписка'
+        verbose_name_plural = 'подписки'

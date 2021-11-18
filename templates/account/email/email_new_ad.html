@@ -1,0 +1,8 @@
+{% load account %}
+{% load i18n %}
+
+{% autoescape off %}
+    Hello from {{ site_url }}!
+    Сheck the new ad: <a href="{{ ad_url }}">{{ ad_title }}</a>
+    Thank you for using {{ site_url }}!
+{% endautoescape %}
