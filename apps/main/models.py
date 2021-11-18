@@ -123,6 +123,7 @@ class Picture(models.Model):
 class Subscription(models.Model):
     """Подписки на объявления."""
 
+    title = models.CharField(verbose_name='заголовок подписки', max_length=128)
     user = models.ManyToManyField(to=User, verbose_name='пользователи', related_name='users')
 
     class Meta:
