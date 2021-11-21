@@ -4,7 +4,6 @@ from django.core.mail import EmailMessage
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.template.loader import render_to_string
-from django.urls import reverse_lazy
 
 from apps.main.models import Ad, Seller, Subscription
 
@@ -36,7 +35,7 @@ def send_email_to_subscribers(**kwargs):
     subject = f"New Ad {instance.title}"
     site_url = Site.objects.get_current().domain
     body = render_to_string('account/email/email_new_ad.html', {
-        'ad_url': site_url + reverse_lazy('ad-detail', args=(instance.id,)),
+        'ad_url': instance.url,
         'ad_title': instance.title,
         'site_url': site_url,
     })
