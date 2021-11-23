@@ -17,6 +17,7 @@ celery = "^5.2.1"
 django-redis = "^5.0.0"
 djantic = "^0.4.1"
 pydantic = "^1.8.2"
+twilio = "^7.3.1"
 
 [tool.poetry.dev-dependencies]
 

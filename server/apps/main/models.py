@@ -136,3 +136,17 @@ class Subscription(models.Model):
     class Meta:
         verbose_name = 'подписка'
         verbose_name_plural = 'подписки'
+
+
+class SMSLog(models.Model):
+    """"""
+
+    seller = models.OneToOneField(to=Seller, verbose_name="продавец", on_delete=models.CASCADE,
+                                  related_name='smslog')
+    code = models.PositiveIntegerField(verbose_name='проверочный код, 4 цифры', max_length=4)
+    confirmed = models.BooleanField(verbose_name='номер подтверждён', default=False)
+    response = models.CharField(verbose_name='ответ от провайдера', blank=True, max_length=1024)
+
+    class Meta:
+        verbose_name = 'Смс подтверждение'
+        verbose_name_plural = 'Смс подтверждения'
