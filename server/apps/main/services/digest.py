@@ -4,13 +4,16 @@ from django.contrib.auth.models import User
 from django.db.models import QuerySet
 
 from apps.main.models import Ad, Subscription
+from apps.main.schemas import AdSchema, UserSchema
 
 
-def get_subsription_users() -> set[User]:
+def get_subsription_users() -> QuerySet[User]:
     """Возвращает пользователей, подписанных на все подписки."""
-    users = set()
-    [users.update(sub.user.iterator()) for sub in Subscription.objects.all()]
-    return users
+    qs = User.objects.none()
+    for sub in Subscription.objects.all():
+        qs |= sub.user.all()
+    qs = qs.distinct()
+    return qs
 
 
 def get_last_weeks_ads() -> QuerySet[Ad]:
@@ -18,6 +21,12 @@ def get_last_weeks_ads() -> QuerySet[Ad]:
     return Ad.objects.filter(creation_date__gte=datetime.now() - timedelta(days=7))
 
 
-def get_digest() -> tuple[set[User], QuerySet[Ad]]:
+def get_digest(serialize=True) -> tuple[QuerySet[User], QuerySet[Ad]] | tuple[UserSchema | list, AdSchema]:
     """Возвращает пользователей и объявления, необходимых для дайджеста"""
-    return get_subsription_users(), get_last_weeks_ads()
+    users = get_subsription_users()
+    ads = get_last_weeks_ads()
+    if not serialize:
+        return users, ads
+    serialized_users = UserSchema.from_django(users, many=True)
+    serialized_ads = AdSchema.from_django(ads, many=True)
+    return serialized_users, serialized_ads
