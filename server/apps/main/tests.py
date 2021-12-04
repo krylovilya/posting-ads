@@ -56,3 +56,17 @@ test category 8
 <QuerySet [<Ad: self.title [test user 1]>, <Ad: self.title [test user 2]>]>
 test category 9
 <QuerySet [<Ad: self.title [test user 0]>, <Ad: self.title [test user 0]>, <Ad: self.title [test user 2]>]>
+
+# Celery
+
+>>> from config.celery import add
+>>> task = add.delay(1, 2)
+>>> print(task.state, task.result)
+SUCCESS 0.5
+>>> task = add.delay(1, 0)
+>>> type(task)
+<class 'celery.result.AsyncResult'>
+>>> task.state
+'FAILURE'
+>>> task.result
+ZeroDivisionError('division by zero')
