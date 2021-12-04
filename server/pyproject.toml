@@ -15,6 +15,8 @@ django-allauth = "^0.45.0"
 APScheduler = "^3.8.1"
 celery = "^5.2.1"
 django-redis = "^5.0.0"
+djantic = "^0.4.1"
+pydantic = "^1.8.2"
 
 [tool.poetry.dev-dependencies]
 
