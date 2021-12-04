@@ -1,0 +1,16 @@
+{% load account %}
+{% load i18n %}
+
+{% autoescape off %}
+    Hello from {{ site_url }}!
+    Сheck new ads:<br>
+    <ul>
+        {% for ad in ads %}
+            <li><a href="{{ ad.url }}">{{ ad.title }}</a></li>
+        {% endfor %}
+    </ul>
+    {% if ad_count > 5 %}
+        You can see the other ads <a href="{{ site_url }}/ads/">here</a>
+    {% endif %}
+    Thank you for using {{ site_url }}!
+{% endautoescape %}

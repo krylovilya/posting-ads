@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
+from django.contrib.sites.models import Site
 from django.db import models
+from django.urls import reverse_lazy
 from django.utils.text import slugify
 
 from apps.main.services.validate_itn import validate_itn
@@ -87,6 +89,11 @@ class Ad(BaseModel):
 
     def __str__(self):
         return f'{self.title} [{self.seller.user}]'
+
+    @property
+    def url(self):
+        site_url = Site.objects.get_current().domain
+        return site_url + reverse_lazy('ad-detail', args=(self.id,))
 
     class Meta:
         verbose_name = 'объявление'

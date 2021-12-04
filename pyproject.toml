@@ -12,6 +12,7 @@ django-constance = "^2.8.0"
 sorl-thumbnail = "^12.7.0"
 Pillow = "^8.4.0"
 django-allauth = "^0.45.0"
+APScheduler = "^3.8.1"
 
 [tool.poetry.dev-dependencies]
 
