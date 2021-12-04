@@ -4,10 +4,60 @@
 
 {% block content %}
 
-    <form method="post" action="/accounts/seller/">{% csrf_token %}
-        {{ user_form.as_p }}
-        {{ seller_form.as_p }}
-        <input type="submit" value="Update">
+    <form method="post" action="/accounts/seller/">
+        {% csrf_token %}
+        {% for field in user_form %}
+            <p>{{ field.label_tag }}
+            {{ field }}
+            {{ field.errors }}
+        {% endfor %}</p>
+        {% for field in form %}
+            <p>{{ field.label_tag }}
+                {{ field }}
+                {{ field.errors }}</p>
+        {% endfor %}
+
+        {% if not user_form.errors or not form.errors %}
+            <p>
+                <button type="button" class="btn btn-light" id="send_sms_button"
+                        onclick="send_sms()">Подтвердить номер
+                </button>
+            </p>{% endif %}
+        <p><span id="sms_sent_text" hidden>Смс подтверждение отправлено</span></p>
+        <input type="submit" id="submit_button" value="Update" hidden>
     </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let sms_code_field = document.getElementById('id_sms_code');
+            sms_code_field.parentElement.hidden = true;
+            sms_code_field.value = '';
+        });
+
+        function send_sms() {
+            let phone = document.getElementById('id_phone').value,
+                re = new RegExp("^(\\+7)[0-9]{10}$");
+            if (re.test(phone)) {
+                fetch("/accounts/seller/send_sms?" + new URLSearchParams({phone: phone}))
+                    .then(() => {
+                        let button = document.getElementById('send_sms_button'),
+                            sms_sent_text = document.getElementById('sms_sent_text'),
+                            sms_code_field = document.getElementById('id_sms_code'),
+                            submit_button = document.getElementById('submit_button');
+
+                        button.disabled = true;
+                        sms_sent_text.hidden = false
+                        sms_code_field.hidden = false;
+                        sms_code_field.parentElement.hidden = false
+                        submit_button.hidden = false;
+
+                    });
+            } else {
+                alert('Неверный номер телефона')
+            }
+        }
+
+
+    </script>
 
 {% endblock %}

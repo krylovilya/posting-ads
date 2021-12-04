@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
+from django.core.validators import MaxValueValidator, MinValueValidator, RegexValidator
 from django.db import models
 from django.urls import reverse_lazy
 from django.utils.text import slugify
@@ -8,7 +9,6 @@ from apps.main.services.validate_itn import validate_itn
 
 
 class BaseModel(models.Model):
-    # name = models.CharField(max_length=128)
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='дата создания')
     update_date = models.DateTimeField(auto_now=True, verbose_name='дата изменения')
 
@@ -23,6 +23,9 @@ class Seller(models.Model):
     itn = models.CharField(verbose_name='идентификационный номер налогоплательщика', max_length=12,
                            validators=(validate_itn,))
     avatar = models.ImageField(verbose_name='аватар пользователя', upload_to='avatars', default='default.jpg')
+    phone_regex = RegexValidator(regex=r'^\+?1?\d{11}$', message="Неверный номер телефона.")
+    phone = models.CharField(verbose_name='номер телефона (в формате +7)',
+                             validators=(phone_regex,), max_length=12, blank=True)
 
     @property
     def num_ads(self):
@@ -139,14 +142,17 @@ class Subscription(models.Model):
 
 
 class SMSLog(models.Model):
-    """"""
+    """Модель связывает продавца и код из смс"""
 
     seller = models.OneToOneField(to=Seller, verbose_name="продавец", on_delete=models.CASCADE,
                                   related_name='smslog')
-    code = models.PositiveIntegerField(verbose_name='проверочный код, 4 цифры', max_length=4)
+    code = models.PositiveIntegerField(verbose_name='проверочный код, 4 цифры', validators=(
+        MaxValueValidator(9999),
+        MinValueValidator(1000),
+    ))
+    sent_phone = models.CharField(verbose_name='номер телефона, на который отправлен смс', max_length=12, blank=True)
     confirmed = models.BooleanField(verbose_name='номер подтверждён', default=False)
-    response = models.CharField(verbose_name='ответ от провайдера', blank=True, max_length=1024)
 
     class Meta:
-        verbose_name = 'Смс подтверждение'
-        verbose_name_plural = 'Смс подтверждения'
+        verbose_name = 'смс подтверждение'
+        verbose_name_plural = 'смс подтверждения'

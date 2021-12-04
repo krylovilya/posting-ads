@@ -19,8 +19,7 @@ def connect_user_to_seller(**kwargs):
     if not kwargs.get('created', True):
         return
     user = kwargs.get('instance')
-    seller = Seller.objects.create(user=user)
-    seller.save()
+    Seller.objects.create(user=user)
 
 
 @receiver(post_save, sender=Ad)

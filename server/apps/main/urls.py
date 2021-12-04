@@ -1,7 +1,7 @@
 from django.urls import include, path
 
-from apps.main.views import (AdCreateView, AdDetailView, AdsListView,
-                             AdUpdateView, IndexView, SellerUpdateView)
+from apps.main.views import (AdCreateView, AdDetailView, AdsListView, AdUpdateView, IndexView, SellerUpdateView,
+                             SendSmsView)
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
@@ -11,4 +11,5 @@ urlpatterns = [
     path('ads/add/', AdCreateView.as_view(), name='ad-create'),
     path('ads/<int:pk>/edit/', AdUpdateView.as_view(), name='ad-edit'),
     path('accounts/seller/', SellerUpdateView.as_view(), name='seller-update'),
+    path('accounts/seller/send_sms/', SendSmsView.as_view(), name='send-sms'),
 ]

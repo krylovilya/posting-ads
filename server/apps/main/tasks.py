@@ -1,6 +1,8 @@
+from django.conf import settings
 from django.contrib.sites.models import Site
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
+from twilio.rest import Client
 
 from apps.main.services.digest import get_digest, get_subsription_users
 from config.celery import app
@@ -42,3 +44,16 @@ def send_digest_task():
     msg = EmailMessage(subject, body, f"noreply@{site_url}", emails)
     msg.content_subtype = "html"
     msg.send()
+
+
+@app.task()
+def send_confirmation_code_by_sms(phone, confirmation_code):
+    """Celery task. Отправляет смс с кодом"""
+    account_sid = settings.TWILIO_ACCOUNT_SID
+    auth_token = settings.TWILIO_AUTH_TOKEN
+    client = Client(account_sid, auth_token)
+    client.messages.create(
+        body=str(confirmation_code),
+        from_=settings.TWILIO_PHONE_NUMBER,
+        to=phone
+    )

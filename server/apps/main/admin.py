@@ -1,10 +1,11 @@
-from ckeditor.widgets import CKEditorWidget
 from django.contrib import admin
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
 from django.db import models
 
-from apps.main.models import Ad, Category, Seller, Subscription, Tag, Picture
+from ckeditor.widgets import CKEditorWidget
+
+from apps.main.models import Ad, Category, Picture, Seller, SMSLog, Subscription, Tag
 
 
 class CustomFlatPageAdmin(FlatPageAdmin):
@@ -31,4 +32,5 @@ admin.site.register(Category)
 admin.site.register(Seller, CustomSellerAdmin)
 admin.site.register(Picture)
 admin.site.register(Tag)
+admin.site.register(SMSLog)
 admin.site.register(Subscription)

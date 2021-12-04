@@ -1,14 +1,17 @@
+from random import randint
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ValidationError
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
-from django.views.generic.base import TemplateView
+from django.views.generic.base import TemplateView, View
 from django.views.generic.edit import ModelFormMixin, ProcessFormView
 
 from constance import config
 
 from apps.main.forms import ImageFormset, SellerForm, UserForm
-from apps.main.models import Ad, Seller, Tag
+from apps.main.models import Ad, Seller, SMSLog, Tag
+from apps.main.tasks import send_confirmation_code_by_sms
 
 
 class IndexView(TemplateView):
@@ -62,9 +65,13 @@ class SellerUpdateView(LoginRequiredMixin, UpdateView):
         return queryset.filter(user=self.request.user).first()
 
     def get_context_data(self, **kwargs):
+        if self.request.POST:
+            user_form = UserForm(data=self.request.POST)
+        else:
+            user_form = UserForm(instance=self.request.user)
         kwargs.update({
-            'seller_form': SellerForm(self.request.POST, instance=self.get_object()),
-            'user_form': UserForm(self.request.POST, instance=self.request.user),
+            'form': self.get_form(),
+            'user_form': user_form,
         })
         return super().get_context_data(**kwargs)
 
@@ -128,3 +135,19 @@ class AdUpdateView(AdViewMixin, UpdateView):
 
     page_title = 'Редактирование объявления'
     success_url = '/?ad_update_success=1'
+
+
+class SendSmsView(View):
+    """Обрабатывает fetch запрос на отправку кода из смс"""
+
+    def get(self, request, *args, **kwargs):
+        user_id = request.user.id
+        seller = Seller.objects.get(user_id=user_id)
+        phone = self.request.GET.get('phone')
+        confirmation_code = randint(1000, 9999)
+        sms_log, _ = SMSLog.objects.update_or_create(seller_id=seller.id, defaults={
+            'code': confirmation_code,
+            'sent_phone': phone,
+        })
+        send_confirmation_code_by_sms.delay(phone, confirmation_code)
+        return HttpResponse('', status=200)
