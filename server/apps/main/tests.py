@@ -1,72 +1,150 @@
->>> import random
+from django.contrib.auth.models import Group, User
+from django.test import Client, TestCase
 
->>> from apps.main.models import Ad, Category, Seller, Tag
+import pytest
 
-
->>> tags = [Tag(title=f'test tag {i}') for i in range(10)]
->>> _ = [tag.save() for tag in tags]
->>> categories = [Category(title=f'test category {i}') for i in range(10)]
->>> _ = [category.save() for category in categories]
->>> from django.contrib.auth import get_user_model
->>> User = get_user_model()
->>> users = [User(username=f'test user {i}') for i in range(3)]
->>> _ = [user.save() for user in users]
->>> sellers = [Seller(user=user) for user in users]
->>> _ = [seller.save() for seller in sellers]
+from apps.main.models import Ad, Category
 
 
->>> def gen_ad(title, seller, categories_list, tags_list):
-...     new_ad = Ad.objects.create(
-...         title=title,
-...         seller_id=seller.id,
-...         category_id=random.choice(categories_list).id
-...     )
-...     new_ad.tags.add(*(tag.id for tag in random.sample(tags_list, random.randint(3, 5))))
-...     new_ad.description = f'this is test ad with tags: {[tag.title for tag in new_ad.tags.all()]}',
-...     new_ad.save()
-...     return new_ad
+class ViewsTestCase(TestCase):
+    """Tests for django.test.TestCase"""
 
->>> ads = [[gen_ad(f'test ad {i} by {seller}', seller, categories, tags) for i in range(random.randint(3, 5))] for seller in sellers]
+    def setUp(self):
+        Group.objects.create(name='common users')
+        self.user = User.objects.create_user(username='test_user', email='test@user.com')
+        self.client = Client()
+        self.client.force_login(self.user)
+        self.category = Category.objects.create(title='test_category')
+        self.ad = Ad.objects.create(
+            title='test_ad',
+            category_id=self.category.id,
+            seller_id=self.user.seller.id
+        )
 
-[[<Ad: self.title [test user 0]>, <Ad: self.title [test user 0]>,
-<Ad: self.title [test user 0]>, <Ad: self.title [test user 0]>],
-[<Ad: self.title [test user 1]>, <Ad: self.title [test user 1]>,
-<Ad: self.title [test user 1]>], [<Ad: self.title [test user 2]>,
-<Ad: self.title [test user 2]>, <Ad: self.title [test user 2]>,
-<Ad: self.title [test user 2]>, <Ad: self.title [test user 2]>]]
+    def test_index_view(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateNotUsed(response, 'main/error_page.html')
+
+    def test_ads_list_view(self):
+        response = self.client.get('/ads/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateNotUsed(response, 'main/error_page.html')
+
+    def test_ad_detail_view(self):
+        response = self.client.get(f'/ads/{self.ad.id}/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateNotUsed(response, 'main/error_page.html')
+
+    def test_seller_update_view(self):
+        response = self.client.get('/accounts/seller/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateNotUsed(response, 'main/error_page.html')
+
+    def test_seller_update_view_anonymous(self):
+        self.client.logout()
+        response = self.client.get('/accounts/seller/')
+        self.assertTemplateNotUsed(response, 'main/error_page.html')
+        self.assertRedirects(response, '/accounts/login/?next=/accounts/seller/')
+
+    def test_ad_create_view(self):
+        response = self.client.get('/ads/add/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateNotUsed(response, 'main/error_page.html')
+
+    def test_ad_update_view(self):
+        response = self.client.get(f'/ads/{self.ad.id}/edit/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateNotUsed(response, 'main/error_page.html')
+
+    def test_ad_update_view_anonymous(self):
+        self.client.logout()
+        response = self.client.get(f'/ads/{self.ad.id}/edit/')
+        self.assertRedirects(response, f'/accounts/login/?next=/ads/{self.ad.id}/edit/')
 
 
->>> for category in Category.objects.all():
-...     filtered_ads = Ad.objects.filter(category=category)
-...     if filtered_ads:
-...         print(category)
-...         print(filtered_ads)
+# tests for pytest
 
-test category 1
-<QuerySet [<Ad: self.title [test user 1]>]>
-test category 3
-<QuerySet [<Ad: self.title [test user 2]>]>
-test category 4
-<QuerySet [<Ad: self.title [test user 0]>, <Ad: self.title [test user 0]>, <Ad: self.title [test user 1]>]>
-test category 5
-<QuerySet [<Ad: self.title [test user 2]>]>
-test category 7
-<QuerySet [<Ad: self.title [test user 2]>]>
-test category 8
-<QuerySet [<Ad: self.title [test user 1]>, <Ad: self.title [test user 2]>]>
-test category 9
-<QuerySet [<Ad: self.title [test user 0]>, <Ad: self.title [test user 0]>, <Ad: self.title [test user 2]>]>
 
-# Celery
+@pytest.fixture
+def set_up():
+    Group.objects.create(name='common users')
+    user = User.objects.create_user(username='test_user', email='test@user.com')
+    client = Client()
+    client.force_login(user)
+    category = Category.objects.create(title='test_category')
+    ad = Ad.objects.create(
+        title='test_ad',
+        category_id=category.id,
+        seller_id=user.seller.id
+    )
+    return {
+        'user': user,
+        'client': client,
+        'category': category,
+        'ad': ad
+    }
 
->>> from config.celery import add
->>> task = add.delay(1, 2)
->>> print(task.state, task.result)
-SUCCESS 0.5
->>> task = add.delay(1, 0)
->>> type(task)
-<class 'celery.result.AsyncResult'>
->>> task.state
-'FAILURE'
->>> task.result
-ZeroDivisionError('division by zero')
+
+@pytest.mark.django_db
+def test_index_view(set_up):
+    response = set_up['client'].get('/')
+    assert response.status_code == 200
+    assert 'main/error_page.html' not in (t.name for t in response.templates)
+
+
+@pytest.mark.django_db
+def test_ads_list_view(set_up):
+    response = set_up['client'].get('/ads/')
+    assert response.status_code == 200
+    assert 'main/error_page.html' not in (t.name for t in response.templates)
+
+
+@pytest.mark.django_db
+def test_ad_detail_view(set_up):
+    ad = set_up['ad']
+    response = set_up['client'].get(f'/ads/{ad.id}/')
+    assert response.status_code == 200
+    assert 'main/error_page.html' not in (t.name for t in response.templates)
+
+
+@pytest.mark.django_db
+def test_seller_update_view(set_up):
+    response = set_up['client'].get('/accounts/seller/')
+    assert response.status_code == 200
+    assert 'main/error_page.html' not in (t.name for t in response.templates)
+
+
+@pytest.mark.django_db
+def test_seller_update_view_anonymous(set_up):
+    client = set_up['client']
+    client.logout()
+    response = client.get('/accounts/seller/')
+    assert 'main/error_page.html' not in (t.name for t in response.templates)
+    assert response.url == '/accounts/login/?next=/accounts/seller/'
+    assert response.status_code == 302
+
+
+@pytest.mark.django_db
+def test_ad_create_view(set_up):
+    response = set_up['client'].get('/ads/add/')
+    assert response.status_code == 200
+    assert 'main/error_page.html' not in (t.name for t in response.templates)
+
+
+@pytest.mark.django_db
+def test_ad_update_view(set_up):
+    ad = set_up['ad']
+    response = set_up['client'].get(f'/ads/{ad.id}/edit/')
+    assert response.status_code == 200
+    assert 'main/error_page.html' not in (t.name for t in response.templates)
+
+
+@pytest.mark.django_db
+def test_ad_update_view_anonymous(set_up):
+    client = set_up['client']
+    client.logout()
+    ad = set_up['ad']
+    response = client.get(f'/ads/{ad.id}/edit/')
+    assert response.url == f'/accounts/login/?next=/ads/{ad.id}/edit/'
+    assert response.status_code == 302
