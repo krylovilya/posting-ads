@@ -1,0 +1,1552 @@
+
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>apps.main package &#8212; документация thinknetica_krylovilya </title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="apps-main-package">
+<h1>apps.main package<a class="headerlink" href="#apps-main-package" title="Ссылка на этот заголовок">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="apps.main.services.html">apps.main.services package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apps.main.services.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps.main.services.html#module-apps.main.services.digest">apps.main.services.digest module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps.main.services.html#module-apps.main.services.validate_itn">apps.main.services.validate_itn module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps.main.services.html#module-apps.main.services">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apps.main.templatetags.html">apps.main.templatetags package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apps.main.templatetags.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps.main.templatetags.html#module-apps.main.templatetags.main_tags_and_filters">apps.main.templatetags.main_tags_and_filters module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps.main.templatetags.html#module-apps.main.templatetags">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Ссылка на этот заголовок">¶</a></h2>
+</section>
+<section id="module-apps.main.admin">
+<span id="apps-main-admin-module"></span><h2>apps.main.admin module<a class="headerlink" href="#module-apps.main.admin" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.admin.CustomFlatPageAdmin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.admin.</span></span><span class="sig-name descname"><span class="pre">CustomFlatPageAdmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/admin.html#CustomFlatPageAdmin"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.admin.CustomFlatPageAdmin" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.flatpages.admin.FlatPageAdmin</span></code></p>
+</div></blockquote>
+<p>Добавление wysiwyg редактора из ckeditor к простым страницам.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="apps.main.admin.CustomFlatPageAdmin.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#apps.main.admin.CustomFlatPageAdmin.media" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.admin.CustomSellerAdmin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.admin.</span></span><span class="sig-name descname"><span class="pre">CustomSellerAdmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">admin_site</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/admin.html#CustomSellerAdmin"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.admin.CustomSellerAdmin" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.admin.options.ModelAdmin</span></code></p>
+</div></blockquote>
+<p>Добавление свойства num_ads в админку.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.admin.CustomSellerAdmin.list_display">
+<span class="sig-name descname"><span class="pre">list_display</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('__str__',</span> <span class="pre">'num_ads')</span></em><a class="headerlink" href="#apps.main.admin.CustomSellerAdmin.list_display" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="apps.main.admin.CustomSellerAdmin.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#apps.main.admin.CustomSellerAdmin.media" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-apps.main.apps">
+<span id="apps-main-apps-module"></span><h2>apps.main.apps module<a class="headerlink" href="#module-apps.main.apps" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.apps.MainConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.apps.</span></span><span class="sig-name descname"><span class="pre">MainConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_module</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/apps.html#MainConfig"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.apps.MainConfig" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.apps.config.AppConfig</span></code></p>
+</div></blockquote>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.apps.MainConfig.default">
+<span class="sig-name descname"><span class="pre">default</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#apps.main.apps.MainConfig.default" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.apps.MainConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'apps.main'</span></em><a class="headerlink" href="#apps.main.apps.MainConfig.name" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.apps.MainConfig.ready">
+<span class="sig-name descname"><span class="pre">ready</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/apps.html#MainConfig.ready"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.apps.MainConfig.ready" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Override this method in subclasses to run code when Django starts.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-apps.main.forms">
+<span id="apps-main-forms-module"></span><h2>apps.main.forms module<a class="headerlink" href="#module-apps.main.forms" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.forms.SellerForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.forms.</span></span><span class="sig-name descname"><span class="pre">SellerForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_id='id_%s'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_class=&lt;class</span> <span class="pre">'django.forms.utils.ErrorList'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_suffix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_permitted=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_required_attribute=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderer=None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/forms.html#SellerForm"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.forms.SellerForm" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.models.ModelForm</span></code></p>
+</div></blockquote>
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.forms.SellerForm.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/apps/main/forms.html#SellerForm.Meta"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.forms.SellerForm.Meta" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</div></blockquote>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.forms.SellerForm.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('itn',</span> <span class="pre">'phone',</span> <span class="pre">'sms_code')</span></em><a class="headerlink" href="#apps.main.forms.SellerForm.Meta.fields" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.forms.SellerForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#apps.main.forms.SellerForm.Meta.model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#apps.main.models.Seller" title="apps.main.models.Seller"><code class="xref py py-class docutils literal notranslate"><span class="pre">apps.main.models.Seller</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.forms.SellerForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'itn':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'phone':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'sms_code':</span> <span class="pre">&lt;django.forms.fields.IntegerField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#apps.main.forms.SellerForm.base_fields" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.forms.SellerForm.clean">
+<span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/forms.html#SellerForm.clean"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.forms.SellerForm.clean" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Hook for doing any extra form-wide cleaning after Field.clean() has been
+called on every field. Any ValidationError raised by this method will
+not be associated with a particular field; it will have a special-case
+association with the field named „__all__“.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.forms.SellerForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'sms_code':</span> <span class="pre">&lt;django.forms.fields.IntegerField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#apps.main.forms.SellerForm.declared_fields" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="apps.main.forms.SellerForm.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#apps.main.forms.SellerForm.media" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.forms.SellerForm.sms_code_widget">
+<span class="sig-name descname"><span class="pre">sms_code_widget</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.forms.widgets.NumberInput</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#apps.main.forms.SellerForm.sms_code_widget" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.forms.SellerForm.validate_phone">
+<span class="sig-name descname"><span class="pre">validate_phone</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/forms.html#SellerForm.validate_phone"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.forms.SellerForm.validate_phone" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Проверка кода из смс</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.forms.UserForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.forms.</span></span><span class="sig-name descname"><span class="pre">UserForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_id='id_%s'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_class=&lt;class</span> <span class="pre">'django.forms.utils.ErrorList'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_suffix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_permitted=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_required_attribute=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderer=None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/forms.html#UserForm"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.forms.UserForm" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.models.ModelForm</span></code></p>
+</div></blockquote>
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.forms.UserForm.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/apps/main/forms.html#UserForm.Meta"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.forms.UserForm.Meta" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</div></blockquote>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.forms.UserForm.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('first_name',</span> <span class="pre">'last_name',</span> <span class="pre">'email')</span></em><a class="headerlink" href="#apps.main.forms.UserForm.Meta.fields" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.forms.UserForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#apps.main.forms.UserForm.Meta.model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.forms.UserForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'email':</span> <span class="pre">&lt;django.forms.fields.EmailField</span> <span class="pre">object&gt;,</span> <span class="pre">'first_name':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'last_name':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#apps.main.forms.UserForm.base_fields" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.forms.UserForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#apps.main.forms.UserForm.declared_fields" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="apps.main.forms.UserForm.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#apps.main.forms.UserForm.media" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-apps.main.models">
+<span id="apps-main-models-module"></span><h2>apps.main.models module<a class="headerlink" href="#module-apps.main.models" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.models.Ad">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.models.</span></span><span class="sig-name descname"><span class="pre">Ad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/models.html#Ad"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.models.Ad" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <a class="reference internal" href="#apps.main.models.BaseModel" title="apps.main.models.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">apps.main.models.BaseModel</span></code></a></p>
+</div></blockquote>
+<p>Модель Объявление.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="apps.main.models.Ad.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#apps.main.models.Ad.DoesNotExist" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="apps.main.models.Ad.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#apps.main.models.Ad.MultipleObjectsReturned" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Ad.archive">
+<span class="sig-name descname"><span class="pre">archive</span></span><a class="headerlink" href="#apps.main.models.Ad.archive" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Ad.category">
+<span class="sig-name descname"><span class="pre">category</span></span><a class="headerlink" href="#apps.main.models.Ad.category" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Ad.category_id">
+<span class="sig-name descname"><span class="pre">category_id</span></span><a class="headerlink" href="#apps.main.models.Ad.category_id" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Ad.creation_date">
+<span class="sig-name descname"><span class="pre">creation_date</span></span><a class="headerlink" href="#apps.main.models.Ad.creation_date" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Ad.description">
+<span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#apps.main.models.Ad.description" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.models.Ad.get_next_by_creation_date">
+<span class="sig-name descname"><span class="pre">get_next_by_creation_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">creation_date&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apps.main.models.Ad.get_next_by_creation_date" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.models.Ad.get_next_by_update_date">
+<span class="sig-name descname"><span class="pre">get_next_by_update_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">update_date&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apps.main.models.Ad.get_next_by_update_date" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.models.Ad.get_previous_by_creation_date">
+<span class="sig-name descname"><span class="pre">get_previous_by_creation_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">creation_date&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apps.main.models.Ad.get_previous_by_creation_date" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.models.Ad.get_previous_by_update_date">
+<span class="sig-name descname"><span class="pre">get_previous_by_update_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">update_date&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apps.main.models.Ad.get_previous_by_update_date" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Ad.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#apps.main.models.Ad.id" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Ad.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#apps.main.models.Ad.objects" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Ad.pictures">
+<span class="sig-name descname"><span class="pre">pictures</span></span><a class="headerlink" href="#apps.main.models.Ad.pictures" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Ad.price">
+<span class="sig-name descname"><span class="pre">price</span></span><a class="headerlink" href="#apps.main.models.Ad.price" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Ad.seller">
+<span class="sig-name descname"><span class="pre">seller</span></span><a class="headerlink" href="#apps.main.models.Ad.seller" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Ad.seller_id">
+<span class="sig-name descname"><span class="pre">seller_id</span></span><a class="headerlink" href="#apps.main.models.Ad.seller_id" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Ad.tags">
+<span class="sig-name descname"><span class="pre">tags</span></span><a class="headerlink" href="#apps.main.models.Ad.tags" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the forward and reverse sides of
+a many-to-many relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pizza</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">toppings</span> <span class="o">=</span> <span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Topping</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;pizzas&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Pizza.toppings</span></code> and <code class="docutils literal notranslate"><span class="pre">Topping.pizzas</span></code> are <code class="docutils literal notranslate"><span class="pre">ManyToManyDescriptor</span></code>
+instances.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Ad.title">
+<span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#apps.main.models.Ad.title" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Ad.update_date">
+<span class="sig-name descname"><span class="pre">update_date</span></span><a class="headerlink" href="#apps.main.models.Ad.update_date" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="apps.main.models.Ad.url">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">url</span></span><a class="headerlink" href="#apps.main.models.Ad.url" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.models.ArchiveAds">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.models.</span></span><span class="sig-name descname"><span class="pre">ArchiveAds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/models.html#ArchiveAds"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.models.ArchiveAds" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <a class="reference internal" href="#apps.main.models.Ad" title="apps.main.models.Ad"><code class="xref py py-class docutils literal notranslate"><span class="pre">apps.main.models.Ad</span></code></a></p>
+</div></blockquote>
+<p>Прокси-модель для архивных объявлений.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="apps.main.models.ArchiveAds.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#apps.main.models.ArchiveAds.DoesNotExist" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <a class="reference internal" href="#apps.main.models.Ad.DoesNotExist" title="apps.main.models.Ad.DoesNotExist"><code class="xref py py-class docutils literal notranslate"><span class="pre">apps.main.models.Ad.DoesNotExist</span></code></a></p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="apps.main.models.ArchiveAds.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#apps.main.models.ArchiveAds.MultipleObjectsReturned" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <a class="reference internal" href="#apps.main.models.Ad.MultipleObjectsReturned" title="apps.main.models.Ad.MultipleObjectsReturned"><code class="xref py py-class docutils literal notranslate"><span class="pre">apps.main.models.Ad.MultipleObjectsReturned</span></code></a></p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.ArchiveAds.archive">
+<span class="sig-name descname"><span class="pre">archive</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;apps.main.models.ArchiveAdsManager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#apps.main.models.ArchiveAds.archive" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.models.ArchiveAdsManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.models.</span></span><span class="sig-name descname"><span class="pre">ArchiveAdsManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/models.html#ArchiveAdsManager"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.models.ArchiveAdsManager" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.manager.Manager</span></code></p>
+</div></blockquote>
+<p>Менеджер, возвращающий архивные объявления.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.models.ArchiveAdsManager.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/models.html#ArchiveAdsManager.get_queryset"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.models.ArchiveAdsManager.get_queryset" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return a new QuerySet object. Subclasses can override this method to
+customize the behavior of the Manager.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.models.BaseModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.models.</span></span><span class="sig-name descname"><span class="pre">BaseModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/models.html#BaseModel"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.models.BaseModel" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+</div></blockquote>
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.models.BaseModel.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/apps/main/models.html#BaseModel.Meta"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.models.BaseModel.Meta" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</div></blockquote>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.BaseModel.Meta.abstract">
+<span class="sig-name descname"><span class="pre">abstract</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#apps.main.models.BaseModel.Meta.abstract" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.BaseModel.creation_date">
+<span class="sig-name descname"><span class="pre">creation_date</span></span><a class="headerlink" href="#apps.main.models.BaseModel.creation_date" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.models.BaseModel.get_next_by_creation_date">
+<span class="sig-name descname"><span class="pre">get_next_by_creation_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">creation_date&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apps.main.models.BaseModel.get_next_by_creation_date" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.models.BaseModel.get_next_by_update_date">
+<span class="sig-name descname"><span class="pre">get_next_by_update_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">update_date&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apps.main.models.BaseModel.get_next_by_update_date" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.models.BaseModel.get_previous_by_creation_date">
+<span class="sig-name descname"><span class="pre">get_previous_by_creation_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">creation_date&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apps.main.models.BaseModel.get_previous_by_creation_date" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.models.BaseModel.get_previous_by_update_date">
+<span class="sig-name descname"><span class="pre">get_previous_by_update_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">update_date&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apps.main.models.BaseModel.get_previous_by_update_date" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.BaseModel.update_date">
+<span class="sig-name descname"><span class="pre">update_date</span></span><a class="headerlink" href="#apps.main.models.BaseModel.update_date" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.models.Category">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.models.</span></span><span class="sig-name descname"><span class="pre">Category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/models.html#Category"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.models.Category" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <a class="reference internal" href="#apps.main.models.BaseModel" title="apps.main.models.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">apps.main.models.BaseModel</span></code></a></p>
+</div></blockquote>
+<p>Модель Категория.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="apps.main.models.Category.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#apps.main.models.Category.DoesNotExist" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="apps.main.models.Category.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#apps.main.models.Category.MultipleObjectsReturned" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Category.ads">
+<span class="sig-name descname"><span class="pre">ads</span></span><a class="headerlink" href="#apps.main.models.Category.ads" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Category.creation_date">
+<span class="sig-name descname"><span class="pre">creation_date</span></span><a class="headerlink" href="#apps.main.models.Category.creation_date" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.models.Category.get_next_by_creation_date">
+<span class="sig-name descname"><span class="pre">get_next_by_creation_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">creation_date&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apps.main.models.Category.get_next_by_creation_date" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.models.Category.get_next_by_update_date">
+<span class="sig-name descname"><span class="pre">get_next_by_update_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">update_date&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apps.main.models.Category.get_next_by_update_date" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.models.Category.get_previous_by_creation_date">
+<span class="sig-name descname"><span class="pre">get_previous_by_creation_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">creation_date&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apps.main.models.Category.get_previous_by_creation_date" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.models.Category.get_previous_by_update_date">
+<span class="sig-name descname"><span class="pre">get_previous_by_update_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">update_date&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apps.main.models.Category.get_previous_by_update_date" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Category.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#apps.main.models.Category.id" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Category.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#apps.main.models.Category.objects" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.models.Category.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/models.html#Category.save"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.models.Category.save" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Save the current instance. Override this in a subclass if you want to
+control the saving process.</p>
+<p>The „force_insert“ and „force_update“ parameters can be used to insist
+that the «save» must be an SQL insert or update (or equivalent for
+non-SQL backends), respectively. Normally, they should not be set.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Category.slug">
+<span class="sig-name descname"><span class="pre">slug</span></span><a class="headerlink" href="#apps.main.models.Category.slug" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Category.title">
+<span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#apps.main.models.Category.title" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Category.update_date">
+<span class="sig-name descname"><span class="pre">update_date</span></span><a class="headerlink" href="#apps.main.models.Category.update_date" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.models.Picture">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.models.</span></span><span class="sig-name descname"><span class="pre">Picture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/models.html#Picture"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.models.Picture" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+</div></blockquote>
+<p>Модель Изображение объявления.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="apps.main.models.Picture.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#apps.main.models.Picture.DoesNotExist" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="apps.main.models.Picture.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#apps.main.models.Picture.MultipleObjectsReturned" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Picture.ad">
+<span class="sig-name descname"><span class="pre">ad</span></span><a class="headerlink" href="#apps.main.models.Picture.ad" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Picture.ad_id">
+<span class="sig-name descname"><span class="pre">ad_id</span></span><a class="headerlink" href="#apps.main.models.Picture.ad_id" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Picture.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#apps.main.models.Picture.id" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Picture.image">
+<span class="sig-name descname"><span class="pre">image</span></span><a class="headerlink" href="#apps.main.models.Picture.image" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Just like the FileDescriptor, but for ImageFields. The only difference is
+assigning the width/height to the width_field/height_field, if appropriate.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Picture.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#apps.main.models.Picture.objects" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.models.SMSLog">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.models.</span></span><span class="sig-name descname"><span class="pre">SMSLog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/models.html#SMSLog"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.models.SMSLog" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+</div></blockquote>
+<p>Модель связывает продавца и код из смс</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="apps.main.models.SMSLog.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#apps.main.models.SMSLog.DoesNotExist" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="apps.main.models.SMSLog.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#apps.main.models.SMSLog.MultipleObjectsReturned" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.SMSLog.code">
+<span class="sig-name descname"><span class="pre">code</span></span><a class="headerlink" href="#apps.main.models.SMSLog.code" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.SMSLog.confirmed">
+<span class="sig-name descname"><span class="pre">confirmed</span></span><a class="headerlink" href="#apps.main.models.SMSLog.confirmed" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.SMSLog.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#apps.main.models.SMSLog.id" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.SMSLog.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#apps.main.models.SMSLog.objects" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.SMSLog.seller">
+<span class="sig-name descname"><span class="pre">seller</span></span><a class="headerlink" href="#apps.main.models.SMSLog.seller" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a one-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Restaurant</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">place</span> <span class="o">=</span> <span class="n">OneToOneField</span><span class="p">(</span><span class="n">Place</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;restaurant&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Restaurant.place</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardOneToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.SMSLog.seller_id">
+<span class="sig-name descname"><span class="pre">seller_id</span></span><a class="headerlink" href="#apps.main.models.SMSLog.seller_id" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.SMSLog.sent_phone">
+<span class="sig-name descname"><span class="pre">sent_phone</span></span><a class="headerlink" href="#apps.main.models.SMSLog.sent_phone" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.models.Seller">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.models.</span></span><span class="sig-name descname"><span class="pre">Seller</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/models.html#Seller"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.models.Seller" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+</div></blockquote>
+<p>Модель Продавец.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="apps.main.models.Seller.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#apps.main.models.Seller.DoesNotExist" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="apps.main.models.Seller.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#apps.main.models.Seller.MultipleObjectsReturned" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Seller.ads">
+<span class="sig-name descname"><span class="pre">ads</span></span><a class="headerlink" href="#apps.main.models.Seller.ads" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Seller.avatar">
+<span class="sig-name descname"><span class="pre">avatar</span></span><a class="headerlink" href="#apps.main.models.Seller.avatar" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Just like the FileDescriptor, but for ImageFields. The only difference is
+assigning the width/height to the width_field/height_field, if appropriate.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Seller.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#apps.main.models.Seller.id" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="apps.main.models.Seller.is_banned">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_banned</span></span><a class="headerlink" href="#apps.main.models.Seller.is_banned" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Seller.itn">
+<span class="sig-name descname"><span class="pre">itn</span></span><a class="headerlink" href="#apps.main.models.Seller.itn" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="apps.main.models.Seller.num_ads">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_ads</span></span><a class="headerlink" href="#apps.main.models.Seller.num_ads" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Seller.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#apps.main.models.Seller.objects" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Seller.phone">
+<span class="sig-name descname"><span class="pre">phone</span></span><a class="headerlink" href="#apps.main.models.Seller.phone" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Seller.phone_regex">
+<span class="sig-name descname"><span class="pre">phone_regex</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.core.validators.RegexValidator</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#apps.main.models.Seller.phone_regex" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Seller.smslog">
+<span class="sig-name descname"><span class="pre">smslog</span></span><a class="headerlink" href="#apps.main.models.Seller.smslog" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Accessor to the related object on the reverse side of a one-to-one
+relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Restaurant</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">place</span> <span class="o">=</span> <span class="n">OneToOneField</span><span class="p">(</span><span class="n">Place</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;restaurant&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Place.restaurant</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseOneToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Seller.user">
+<span class="sig-name descname"><span class="pre">user</span></span><a class="headerlink" href="#apps.main.models.Seller.user" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a one-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Restaurant</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">place</span> <span class="o">=</span> <span class="n">OneToOneField</span><span class="p">(</span><span class="n">Place</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;restaurant&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Restaurant.place</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardOneToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Seller.user_id">
+<span class="sig-name descname"><span class="pre">user_id</span></span><a class="headerlink" href="#apps.main.models.Seller.user_id" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.models.Subscription">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.models.</span></span><span class="sig-name descname"><span class="pre">Subscription</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/models.html#Subscription"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.models.Subscription" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+</div></blockquote>
+<p>Подписки на объявления.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="apps.main.models.Subscription.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#apps.main.models.Subscription.DoesNotExist" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="apps.main.models.Subscription.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#apps.main.models.Subscription.MultipleObjectsReturned" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Subscription.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#apps.main.models.Subscription.id" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Subscription.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#apps.main.models.Subscription.objects" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Subscription.title">
+<span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#apps.main.models.Subscription.title" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Subscription.user">
+<span class="sig-name descname"><span class="pre">user</span></span><a class="headerlink" href="#apps.main.models.Subscription.user" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the forward and reverse sides of
+a many-to-many relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pizza</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">toppings</span> <span class="o">=</span> <span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Topping</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;pizzas&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Pizza.toppings</span></code> and <code class="docutils literal notranslate"><span class="pre">Topping.pizzas</span></code> are <code class="docutils literal notranslate"><span class="pre">ManyToManyDescriptor</span></code>
+instances.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.models.Tag">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.models.</span></span><span class="sig-name descname"><span class="pre">Tag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/models.html#Tag"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.models.Tag" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <a class="reference internal" href="#apps.main.models.BaseModel" title="apps.main.models.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">apps.main.models.BaseModel</span></code></a></p>
+</div></blockquote>
+<p>Модель Тэг.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="apps.main.models.Tag.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#apps.main.models.Tag.DoesNotExist" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="apps.main.models.Tag.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#apps.main.models.Tag.MultipleObjectsReturned" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Tag.ads">
+<span class="sig-name descname"><span class="pre">ads</span></span><a class="headerlink" href="#apps.main.models.Tag.ads" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the forward and reverse sides of
+a many-to-many relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pizza</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">toppings</span> <span class="o">=</span> <span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Topping</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;pizzas&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Pizza.toppings</span></code> and <code class="docutils literal notranslate"><span class="pre">Topping.pizzas</span></code> are <code class="docutils literal notranslate"><span class="pre">ManyToManyDescriptor</span></code>
+instances.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Tag.creation_date">
+<span class="sig-name descname"><span class="pre">creation_date</span></span><a class="headerlink" href="#apps.main.models.Tag.creation_date" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.models.Tag.get_next_by_creation_date">
+<span class="sig-name descname"><span class="pre">get_next_by_creation_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">creation_date&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apps.main.models.Tag.get_next_by_creation_date" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.models.Tag.get_next_by_update_date">
+<span class="sig-name descname"><span class="pre">get_next_by_update_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">update_date&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apps.main.models.Tag.get_next_by_update_date" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.models.Tag.get_previous_by_creation_date">
+<span class="sig-name descname"><span class="pre">get_previous_by_creation_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">creation_date&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apps.main.models.Tag.get_previous_by_creation_date" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.models.Tag.get_previous_by_update_date">
+<span class="sig-name descname"><span class="pre">get_previous_by_update_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">update_date&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apps.main.models.Tag.get_previous_by_update_date" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Tag.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#apps.main.models.Tag.id" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Tag.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#apps.main.models.Tag.objects" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.models.Tag.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/models.html#Tag.save"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.models.Tag.save" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Save the current instance. Override this in a subclass if you want to
+control the saving process.</p>
+<p>The „force_insert“ and „force_update“ parameters can be used to insist
+that the «save» must be an SQL insert or update (or equivalent for
+non-SQL backends), respectively. Normally, they should not be set.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Tag.slug">
+<span class="sig-name descname"><span class="pre">slug</span></span><a class="headerlink" href="#apps.main.models.Tag.slug" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Tag.title">
+<span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#apps.main.models.Tag.title" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.models.Tag.update_date">
+<span class="sig-name descname"><span class="pre">update_date</span></span><a class="headerlink" href="#apps.main.models.Tag.update_date" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-apps.main.schemas">
+<span id="apps-main-schemas-module"></span><h2>apps.main.schemas module<a class="headerlink" href="#module-apps.main.schemas" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.schemas.AdSchema">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.schemas.</span></span><span class="sig-name descname"><span class="pre">AdSchema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pydantic.types.ConstrainedStrValue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seller</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/schemas.html#AdSchema"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.schemas.AdSchema" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <a class="reference internal" href="#apps.main.schemas.AdSchema" title="apps.main.schemas.AdSchema"><code class="xref py py-class docutils literal notranslate"><span class="pre">apps.main.schemas.AdSchema</span></code></a></p>
+</div></blockquote>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.schemas.AdSchema.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#apps.main.schemas.AdSchema.id" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.schemas.AdSchema.instance">
+<span class="sig-name descname"><span class="pre">instance</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#apps.main.schemas.AdSchema.instance" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.schemas.AdSchema.seller">
+<span class="sig-name descname"><span class="pre">seller</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#apps.main.schemas.AdSchema.seller" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.schemas.AdSchema.title">
+<span class="sig-name descname"><span class="pre">title</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#apps.main.schemas.AdSchema.title" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.schemas.UserSchema">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.schemas.</span></span><span class="sig-name descname"><span class="pre">UserSchema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pydantic.types.ConstrainedStrValue</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/schemas.html#UserSchema"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.schemas.UserSchema" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <a class="reference internal" href="#apps.main.schemas.UserSchema" title="apps.main.schemas.UserSchema"><code class="xref py py-class docutils literal notranslate"><span class="pre">apps.main.schemas.UserSchema</span></code></a></p>
+</div></blockquote>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.schemas.UserSchema.email">
+<span class="sig-name descname"><span class="pre">email</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#apps.main.schemas.UserSchema.email" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.schemas.UserSchema.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#apps.main.schemas.UserSchema.id" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.schemas.UserSchema.instance">
+<span class="sig-name descname"><span class="pre">instance</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#apps.main.schemas.UserSchema.instance" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-apps.main.signals">
+<span id="apps-main-signals-module"></span><h2>apps.main.signals module<a class="headerlink" href="#module-apps.main.signals" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="apps.main.signals.add_user_to_group">
+<span class="sig-prename descclassname"><span class="pre">apps.main.signals.</span></span><span class="sig-name descname"><span class="pre">add_user_to_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sender</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/signals.html#add_user_to_group"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.signals.add_user_to_group" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Добавление нового пользователя в группу „common users“.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apps.main.signals.connect_user_to_seller">
+<span class="sig-prename descclassname"><span class="pre">apps.main.signals.</span></span><span class="sig-name descname"><span class="pre">connect_user_to_seller</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/signals.html#connect_user_to_seller"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.signals.connect_user_to_seller" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Проверка, что Продавец создан для пользователя.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apps.main.signals.send_email_to_subscribers">
+<span class="sig-prename descclassname"><span class="pre">apps.main.signals.</span></span><span class="sig-name descname"><span class="pre">send_email_to_subscribers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/signals.html#send_email_to_subscribers"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.signals.send_email_to_subscribers" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Отправка email всем подписчикам о новом объявлении.</p>
+</dd></dl>
+
+</section>
+<section id="module-apps.main.tasks">
+<span id="apps-main-tasks-module"></span><h2>apps.main.tasks module<a class="headerlink" href="#module-apps.main.tasks" title="Ссылка на этот заголовок">¶</a></h2>
+</section>
+<section id="module-apps.main.tests">
+<span id="apps-main-tests-module"></span><h2>apps.main.tests module<a class="headerlink" href="#module-apps.main.tests" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.tests.ViewsTestCase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.tests.</span></span><span class="sig-name descname"><span class="pre">ViewsTestCase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/tests.html#ViewsTestCase"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.tests.ViewsTestCase" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.test.testcases.TestCase</span></code></p>
+</div></blockquote>
+<p>Tests for django.test.TestCase</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.tests.ViewsTestCase.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/tests.html#ViewsTestCase.setUp"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.tests.ViewsTestCase.setUp" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.tests.ViewsTestCase.test_ad_create_view">
+<span class="sig-name descname"><span class="pre">test_ad_create_view</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/tests.html#ViewsTestCase.test_ad_create_view"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.tests.ViewsTestCase.test_ad_create_view" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.tests.ViewsTestCase.test_ad_detail_view">
+<span class="sig-name descname"><span class="pre">test_ad_detail_view</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/tests.html#ViewsTestCase.test_ad_detail_view"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.tests.ViewsTestCase.test_ad_detail_view" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.tests.ViewsTestCase.test_ad_update_view">
+<span class="sig-name descname"><span class="pre">test_ad_update_view</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/tests.html#ViewsTestCase.test_ad_update_view"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.tests.ViewsTestCase.test_ad_update_view" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.tests.ViewsTestCase.test_ad_update_view_anonymous">
+<span class="sig-name descname"><span class="pre">test_ad_update_view_anonymous</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/tests.html#ViewsTestCase.test_ad_update_view_anonymous"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.tests.ViewsTestCase.test_ad_update_view_anonymous" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.tests.ViewsTestCase.test_ads_list_view">
+<span class="sig-name descname"><span class="pre">test_ads_list_view</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/tests.html#ViewsTestCase.test_ads_list_view"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.tests.ViewsTestCase.test_ads_list_view" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.tests.ViewsTestCase.test_index_view">
+<span class="sig-name descname"><span class="pre">test_index_view</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/tests.html#ViewsTestCase.test_index_view"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.tests.ViewsTestCase.test_index_view" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.tests.ViewsTestCase.test_seller_update_view">
+<span class="sig-name descname"><span class="pre">test_seller_update_view</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/tests.html#ViewsTestCase.test_seller_update_view"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.tests.ViewsTestCase.test_seller_update_view" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.tests.ViewsTestCase.test_seller_update_view_anonymous">
+<span class="sig-name descname"><span class="pre">test_seller_update_view_anonymous</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/tests.html#ViewsTestCase.test_seller_update_view_anonymous"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.tests.ViewsTestCase.test_seller_update_view_anonymous" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apps.main.tests.set_up">
+<span class="sig-prename descclassname"><span class="pre">apps.main.tests.</span></span><span class="sig-name descname"><span class="pre">set_up</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/tests.html#set_up"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.tests.set_up" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apps.main.tests.test_ad_create_view">
+<span class="sig-prename descclassname"><span class="pre">apps.main.tests.</span></span><span class="sig-name descname"><span class="pre">test_ad_create_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">set_up</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/tests.html#test_ad_create_view"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.tests.test_ad_create_view" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apps.main.tests.test_ad_detail_view">
+<span class="sig-prename descclassname"><span class="pre">apps.main.tests.</span></span><span class="sig-name descname"><span class="pre">test_ad_detail_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">set_up</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/tests.html#test_ad_detail_view"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.tests.test_ad_detail_view" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apps.main.tests.test_ad_update_view">
+<span class="sig-prename descclassname"><span class="pre">apps.main.tests.</span></span><span class="sig-name descname"><span class="pre">test_ad_update_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">set_up</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/tests.html#test_ad_update_view"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.tests.test_ad_update_view" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apps.main.tests.test_ad_update_view_anonymous">
+<span class="sig-prename descclassname"><span class="pre">apps.main.tests.</span></span><span class="sig-name descname"><span class="pre">test_ad_update_view_anonymous</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">set_up</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/tests.html#test_ad_update_view_anonymous"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.tests.test_ad_update_view_anonymous" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apps.main.tests.test_ads_list_view">
+<span class="sig-prename descclassname"><span class="pre">apps.main.tests.</span></span><span class="sig-name descname"><span class="pre">test_ads_list_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">set_up</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/tests.html#test_ads_list_view"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.tests.test_ads_list_view" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apps.main.tests.test_index_view">
+<span class="sig-prename descclassname"><span class="pre">apps.main.tests.</span></span><span class="sig-name descname"><span class="pre">test_index_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">set_up</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/tests.html#test_index_view"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.tests.test_index_view" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apps.main.tests.test_seller_update_view">
+<span class="sig-prename descclassname"><span class="pre">apps.main.tests.</span></span><span class="sig-name descname"><span class="pre">test_seller_update_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">set_up</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/tests.html#test_seller_update_view"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.tests.test_seller_update_view" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apps.main.tests.test_seller_update_view_anonymous">
+<span class="sig-prename descclassname"><span class="pre">apps.main.tests.</span></span><span class="sig-name descname"><span class="pre">test_seller_update_view_anonymous</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">set_up</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/tests.html#test_seller_update_view_anonymous"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.tests.test_seller_update_view_anonymous" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-apps.main.urls">
+<span id="apps-main-urls-module"></span><h2>apps.main.urls module<a class="headerlink" href="#module-apps.main.urls" title="Ссылка на этот заголовок">¶</a></h2>
+</section>
+<section id="module-apps.main.views">
+<span id="apps-main-views-module"></span><h2>apps.main.views module<a class="headerlink" href="#module-apps.main.views" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.views.AdCreateView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.views.</span></span><span class="sig-name descname"><span class="pre">AdCreateView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/views.html#AdCreateView"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.views.AdCreateView" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <a class="reference internal" href="#apps.main.views.AdViewMixin" title="apps.main.views.AdViewMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">apps.main.views.AdViewMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.edit.CreateView</span></code></p>
+</div></blockquote>
+<p>Отобразить форму создания объявления.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.views.AdCreateView.page_title">
+<span class="sig-name descname"><span class="pre">page_title</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Создание</span> <span class="pre">объявления'</span></em><a class="headerlink" href="#apps.main.views.AdCreateView.page_title" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.views.AdCreateView.success_url">
+<span class="sig-name descname"><span class="pre">success_url</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/?ad_create_success=1'</span></em><a class="headerlink" href="#apps.main.views.AdCreateView.success_url" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.views.AdDetailView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.views.</span></span><span class="sig-name descname"><span class="pre">AdDetailView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/views.html#AdDetailView"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.views.AdDetailView" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.detail.DetailView</span></code></p>
+</div></blockquote>
+<p>Детальная информация об объявлении.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.views.AdDetailView.dispatch">
+<span class="sig-name descname"><span class="pre">dispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apps.main.views.AdDetailView.dispatch" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.views.AdDetailView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/views.html#AdDetailView.get_context_data"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.views.AdDetailView.get_context_data" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Insert the single object into the context dict.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.views.AdDetailView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#apps.main.views.AdDetailView.model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#apps.main.models.Ad" title="apps.main.models.Ad"><code class="xref py py-class docutils literal notranslate"><span class="pre">apps.main.models.Ad</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.views.AdDetailView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'main/ad_detail.html'</span></em><a class="headerlink" href="#apps.main.views.AdDetailView.template_name" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.views.AdUpdateView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.views.</span></span><span class="sig-name descname"><span class="pre">AdUpdateView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/views.html#AdUpdateView"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.views.AdUpdateView" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <a class="reference internal" href="#apps.main.views.AdViewMixin" title="apps.main.views.AdViewMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">apps.main.views.AdViewMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.edit.UpdateView</span></code></p>
+</div></blockquote>
+<p>Отобразить форму редактирования объявления.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.views.AdUpdateView.page_title">
+<span class="sig-name descname"><span class="pre">page_title</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Редактирование</span> <span class="pre">объявления'</span></em><a class="headerlink" href="#apps.main.views.AdUpdateView.page_title" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.views.AdUpdateView.success_url">
+<span class="sig-name descname"><span class="pre">success_url</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/?ad_update_success=1'</span></em><a class="headerlink" href="#apps.main.views.AdUpdateView.success_url" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.views.AdViewMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.views.</span></span><span class="sig-name descname"><span class="pre">AdViewMixin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/views.html#AdViewMixin"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.views.AdViewMixin" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.edit.ModelFormMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.mixins.LoginRequiredMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.edit.ProcessFormView</span></code></p>
+</div></blockquote>
+<p>Миксин для отображения форм объявлений.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.views.AdViewMixin.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('title',</span> <span class="pre">'description',</span> <span class="pre">'category',</span> <span class="pre">'tags',</span> <span class="pre">'price')</span></em><a class="headerlink" href="#apps.main.views.AdViewMixin.fields" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.views.AdViewMixin.form_valid">
+<span class="sig-name descname"><span class="pre">form_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/views.html#AdViewMixin.form_valid"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.views.AdViewMixin.form_valid" title="Ссылка на это определение">¶</a></dt>
+<dd><p>If the form is valid, save the associated model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.views.AdViewMixin.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/views.html#AdViewMixin.get_context_data"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.views.AdViewMixin.get_context_data" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Insert the form into the context dict.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.views.AdViewMixin.get_object">
+<span class="sig-name descname"><span class="pre">get_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">queryset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/views.html#AdViewMixin.get_object"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.views.AdViewMixin.get_object" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return the object the view is displaying.</p>
+<p>Require <cite>self.queryset</cite> and a <cite>pk</cite> or <cite>slug</cite> argument in the URLconf.
+Subclasses can override this to return any object.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.views.AdViewMixin.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#apps.main.views.AdViewMixin.model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#apps.main.models.Ad" title="apps.main.models.Ad"><code class="xref py py-class docutils literal notranslate"><span class="pre">apps.main.models.Ad</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.views.AdViewMixin.page_title">
+<span class="sig-name descname"><span class="pre">page_title</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#apps.main.views.AdViewMixin.page_title" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.views.AdViewMixin.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/views.html#AdViewMixin.post"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.views.AdViewMixin.post" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Handle POST requests: instantiate a form instance with the passed
+POST variables and then check if it’s valid.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.views.AdViewMixin.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'main/ad_create.html'</span></em><a class="headerlink" href="#apps.main.views.AdViewMixin.template_name" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.views.AdsListView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.views.</span></span><span class="sig-name descname"><span class="pre">AdsListView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/views.html#AdsListView"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.views.AdsListView" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.list.ListView</span></code></p>
+</div></blockquote>
+<p>Список объявлений.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.views.AdsListView.dispatch">
+<span class="sig-name descname"><span class="pre">dispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apps.main.views.AdsListView.dispatch" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.views.AdsListView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/views.html#AdsListView.get_context_data"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.views.AdsListView.get_context_data" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Get the context for this view.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.views.AdsListView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/views.html#AdsListView.get_queryset"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.views.AdsListView.get_queryset" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return the list of items for this view.</p>
+<p>The return value must be an iterable and may be an instance of
+<cite>QuerySet</cite> in which case <cite>QuerySet</cite> specific behavior will be enabled.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.views.AdsListView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#apps.main.views.AdsListView.model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#apps.main.models.Ad" title="apps.main.models.Ad"><code class="xref py py-class docutils literal notranslate"><span class="pre">apps.main.models.Ad</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.views.AdsListView.paginate_by">
+<span class="sig-name descname"><span class="pre">paginate_by</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#apps.main.views.AdsListView.paginate_by" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.views.AdsListView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'main/ad_list.html'</span></em><a class="headerlink" href="#apps.main.views.AdsListView.template_name" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.views.IndexView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.views.</span></span><span class="sig-name descname"><span class="pre">IndexView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/views.html#IndexView"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.views.IndexView" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.base.TemplateView</span></code></p>
+</div></blockquote>
+<p>Главная страница.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.views.IndexView.extra_context">
+<span class="sig-name descname"><span class="pre">extra_context</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'turn_on_block':</span> <span class="pre">False}</span></em><a class="headerlink" href="#apps.main.views.IndexView.extra_context" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.views.IndexView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'main/index.html'</span></em><a class="headerlink" href="#apps.main.views.IndexView.template_name" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.views.SellerUpdateView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.views.</span></span><span class="sig-name descname"><span class="pre">SellerUpdateView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/views.html#SellerUpdateView"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.views.SellerUpdateView" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.mixins.LoginRequiredMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.edit.UpdateView</span></code></p>
+</div></blockquote>
+<p>Обновление информации об продавце.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.views.SellerUpdateView.form_class">
+<span class="sig-name descname"><span class="pre">form_class</span></span><a class="headerlink" href="#apps.main.views.SellerUpdateView.form_class" title="Ссылка на это определение">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#apps.main.forms.SellerForm" title="apps.main.forms.SellerForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">apps.main.forms.SellerForm</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.views.SellerUpdateView.form_valid">
+<span class="sig-name descname"><span class="pre">form_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seller_form</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/views.html#SellerUpdateView.form_valid"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.views.SellerUpdateView.form_valid" title="Ссылка на это определение">¶</a></dt>
+<dd><p>If the form is valid, save the associated model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.views.SellerUpdateView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/views.html#SellerUpdateView.get_context_data"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.views.SellerUpdateView.get_context_data" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Insert the form into the context dict.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.views.SellerUpdateView.get_object">
+<span class="sig-name descname"><span class="pre">get_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">queryset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/views.html#SellerUpdateView.get_object"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.views.SellerUpdateView.get_object" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return the object the view is displaying.</p>
+<p>Require <cite>self.queryset</cite> and a <cite>pk</cite> or <cite>slug</cite> argument in the URLconf.
+Subclasses can override this to return any object.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.views.SellerUpdateView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#apps.main.views.SellerUpdateView.model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#apps.main.models.Seller" title="apps.main.models.Seller"><code class="xref py py-class docutils literal notranslate"><span class="pre">apps.main.models.Seller</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.views.SellerUpdateView.success_url">
+<span class="sig-name descname"><span class="pre">success_url</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/?seller_update_success=1'</span></em><a class="headerlink" href="#apps.main.views.SellerUpdateView.success_url" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.main.views.SellerUpdateView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'main/seller_update.html'</span></em><a class="headerlink" href="#apps.main.views.SellerUpdateView.template_name" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.main.views.SendSmsView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.main.views.</span></span><span class="sig-name descname"><span class="pre">SendSmsView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/views.html#SendSmsView"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.views.SendSmsView" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.base.View</span></code></p>
+</div></blockquote>
+<p>Обрабатывает fetch запрос на отправку кода из смс</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.main.views.SendSmsView.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/apps/main/views.html#SendSmsView.get"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.main.views.SendSmsView.get" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-apps.main">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-apps.main" title="Ссылка на этот заголовок">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">thinknetica_krylovilya</a></h1>
+
+
+
+
+
+
+
+
+<h3>Навигация</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Ilya.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/apps.main.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

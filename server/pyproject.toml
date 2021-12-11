@@ -20,6 +20,7 @@ pydantic = "^1.8.2"
 twilio = "^7.3.1"
 redis = "4.0.2"
 pytest-django = "^4.5.1"
+Sphinx = "^4.3.1"
 
 [tool.poetry.dev-dependencies]
 coveralls = "3.3.1"

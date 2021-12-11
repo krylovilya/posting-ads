@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>apps.main.views &#8212; документация thinknetica_krylovilya </title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Исходный код apps.main.views</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span><span class="p">,</span> <span class="n">uniform</span>
+
+<span class="kn">from</span> <span class="nn">django.contrib.auth.mixins</span> <span class="kn">import</span> <span class="n">LoginRequiredMixin</span>
+<span class="kn">from</span> <span class="nn">django.core.cache</span> <span class="kn">import</span> <span class="n">cache</span>
+<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">ValidationError</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">Http404</span><span class="p">,</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">HttpResponseRedirect</span>
+<span class="kn">from</span> <span class="nn">django.utils.decorators</span> <span class="kn">import</span> <span class="n">method_decorator</span>
+<span class="kn">from</span> <span class="nn">django.views.decorators.cache</span> <span class="kn">import</span> <span class="n">cache_page</span>
+<span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">CreateView</span><span class="p">,</span> <span class="n">DetailView</span><span class="p">,</span> <span class="n">ListView</span><span class="p">,</span> <span class="n">UpdateView</span>
+<span class="kn">from</span> <span class="nn">django.views.generic.base</span> <span class="kn">import</span> <span class="n">TemplateView</span><span class="p">,</span> <span class="n">View</span>
+<span class="kn">from</span> <span class="nn">django.views.generic.edit</span> <span class="kn">import</span> <span class="n">ModelFormMixin</span><span class="p">,</span> <span class="n">ProcessFormView</span>
+
+<span class="kn">from</span> <span class="nn">constance</span> <span class="kn">import</span> <span class="n">config</span>
+
+<span class="kn">from</span> <span class="nn">apps.main.forms</span> <span class="kn">import</span> <span class="n">ImageFormset</span><span class="p">,</span> <span class="n">SellerForm</span><span class="p">,</span> <span class="n">UserForm</span>
+<span class="kn">from</span> <span class="nn">apps.main.models</span> <span class="kn">import</span> <span class="n">Ad</span><span class="p">,</span> <span class="n">Seller</span><span class="p">,</span> <span class="n">SMSLog</span><span class="p">,</span> <span class="n">Tag</span>
+<span class="kn">from</span> <span class="nn">apps.main.tasks</span> <span class="kn">import</span> <span class="n">send_confirmation_code_by_sms</span>
+
+
+<div class="viewcode-block" id="IndexView"><a class="viewcode-back" href="../../../apps.main.html#apps.main.views.IndexView">[документация]</a><span class="k">class</span> <span class="nc">IndexView</span><span class="p">(</span><span class="n">TemplateView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Главная страница.&quot;&quot;&quot;</span>
+
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s2">&quot;main/index.html&quot;</span>
+    <span class="n">extra_context</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;turn_on_block&#39;</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">MAINTENANCE_MODE</span><span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="AdsListView"><a class="viewcode-back" href="../../../apps.main.html#apps.main.views.AdsListView">[документация]</a><span class="nd">@method_decorator</span><span class="p">(</span><span class="n">cache_page</span><span class="p">(</span><span class="mi">60</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;dispatch&#39;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">AdsListView</span><span class="p">(</span><span class="n">ListView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Список объявлений.&quot;&quot;&quot;</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Ad</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s2">&quot;main/ad_list.html&quot;</span>
+    <span class="n">paginate_by</span> <span class="o">=</span> <span class="mi">5</span>
+
+<div class="viewcode-block" id="AdsListView.get_context_data"><a class="viewcode-back" href="../../../apps.main.html#apps.main.views.AdsListView.get_context_data">[документация]</a>    <span class="k">def</span> <span class="nf">get_context_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+            <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="n">Tag</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">(),</span>
+            <span class="s1">&#39;current_tag&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tag&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="p">})</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_context_data</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AdsListView.get_queryset"><a class="viewcode-back" href="../../../apps.main.html#apps.main.views.AdsListView.get_queryset">[документация]</a>    <span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">queryset</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span>
+        <span class="n">tag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tag&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">tag</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">tags__slug</span><span class="o">=</span><span class="n">tag</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">queryset</span></div></div>
+
+
+<div class="viewcode-block" id="AdDetailView"><a class="viewcode-back" href="../../../apps.main.html#apps.main.views.AdDetailView">[документация]</a><span class="nd">@method_decorator</span><span class="p">(</span><span class="n">cache_page</span><span class="p">(</span><span class="mi">60</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;dispatch&#39;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">AdDetailView</span><span class="p">(</span><span class="n">DetailView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Детальная информация об объявлении.&quot;&quot;&quot;</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Ad</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s2">&quot;main/ad_detail.html&quot;</span>
+
+<div class="viewcode-block" id="AdDetailView.get_context_data"><a class="viewcode-back" href="../../../apps.main.html#apps.main.views.AdDetailView.get_context_data">[документация]</a>    <span class="k">def</span> <span class="nf">get_context_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">price_factor</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;price_factor&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">price_factor</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">price_factor</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">cache</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;price_factor&#39;</span><span class="p">,</span> <span class="n">price_factor</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;price_factor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">price_factor</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_context_data</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="SellerUpdateView"><a class="viewcode-back" href="../../../apps.main.html#apps.main.views.SellerUpdateView">[документация]</a><span class="k">class</span> <span class="nc">SellerUpdateView</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">UpdateView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Обновление информации об продавце.&quot;&quot;&quot;</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Seller</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s2">&quot;main/seller_update.html&quot;</span>
+    <span class="n">success_url</span> <span class="o">=</span> <span class="s1">&#39;/?seller_update_success=1&#39;</span>
+    <span class="n">form_class</span> <span class="o">=</span> <span class="n">SellerForm</span>
+
+<div class="viewcode-block" id="SellerUpdateView.get_object"><a class="viewcode-back" href="../../../apps.main.html#apps.main.views.SellerUpdateView.get_object">[документация]</a>    <span class="k">def</span> <span class="nf">get_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">queryset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">queryset</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">queryset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="SellerUpdateView.get_context_data"><a class="viewcode-back" href="../../../apps.main.html#apps.main.views.SellerUpdateView.get_context_data">[документация]</a>    <span class="k">def</span> <span class="nf">get_context_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>
+            <span class="n">user_form</span> <span class="o">=</span> <span class="n">UserForm</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">user_form</span> <span class="o">=</span> <span class="n">UserForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+            <span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_form</span><span class="p">(),</span>
+            <span class="s1">&#39;user_form&#39;</span><span class="p">:</span> <span class="n">user_form</span><span class="p">,</span>
+        <span class="p">})</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_context_data</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SellerUpdateView.form_valid"><a class="viewcode-back" href="../../../apps.main.html#apps.main.views.SellerUpdateView.form_valid">[документация]</a>    <span class="k">def</span> <span class="nf">form_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seller_form</span><span class="p">):</span>
+        <span class="n">user_form</span> <span class="o">=</span> <span class="n">UserForm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">user_form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;User form is not valid&#39;</span><span class="p">)</span>
+        <span class="n">user_form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">seller_form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_success_url</span><span class="p">())</span></div></div>
+
+
+<div class="viewcode-block" id="AdViewMixin"><a class="viewcode-back" href="../../../apps.main.html#apps.main.views.AdViewMixin">[документация]</a><span class="k">class</span> <span class="nc">AdViewMixin</span><span class="p">(</span><span class="n">ModelFormMixin</span><span class="p">,</span> <span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">ProcessFormView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Миксин для отображения форм объявлений.&quot;&quot;&quot;</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Ad</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;category&#39;</span><span class="p">,</span> <span class="s1">&#39;tags&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">)</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;main/ad_create.html&#39;</span>
+    <span class="n">page_title</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+<div class="viewcode-block" id="AdViewMixin.form_valid"><a class="viewcode-back" href="../../../apps.main.html#apps.main.views.AdViewMixin.form_valid">[документация]</a>    <span class="k">def</span> <span class="nf">form_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
+        <span class="n">seller</span> <span class="o">=</span> <span class="n">Seller</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">form</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">seller</span> <span class="o">=</span> <span class="n">seller</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">form_valid</span><span class="p">(</span><span class="n">form</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AdViewMixin.get_context_data"><a class="viewcode-back" href="../../../apps.main.html#apps.main.views.AdViewMixin.get_context_data">[документация]</a>    <span class="k">def</span> <span class="nf">get_context_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+            <span class="s1">&#39;page_title&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">page_title</span><span class="p">,</span>
+            <span class="s1">&#39;image_formset&#39;</span><span class="p">:</span> <span class="n">ImageFormset</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">)</span>
+        <span class="p">})</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_context_data</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AdViewMixin.post"><a class="viewcode-back" href="../../../apps.main.html#apps.main.views.AdViewMixin.post">[документация]</a>    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">seller</span><span class="o">.</span><span class="n">is_banned</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">Http404</span><span class="p">(</span><span class="s1">&#39;У вас недостаточно прав для добавления/изменения объявлений&#39;</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">image_formset</span> <span class="o">=</span> <span class="n">ImageFormset</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">image_formset</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">image_form</span> <span class="ow">in</span> <span class="n">image_formset</span><span class="p">:</span>
+                <span class="n">image_form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">response</span></div>
+
+<div class="viewcode-block" id="AdViewMixin.get_object"><a class="viewcode-back" href="../../../apps.main.html#apps.main.views.AdViewMixin.get_object">[документация]</a>    <span class="k">def</span> <span class="nf">get_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">queryset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="n">queryset</span><span class="p">)</span>
+        <span class="n">seller</span> <span class="o">=</span> <span class="n">Seller</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">obj</span><span class="o">.</span><span class="n">seller</span><span class="o">.</span><span class="n">pk</span> <span class="o">!=</span> <span class="n">seller</span><span class="o">.</span><span class="n">pk</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">Http404</span><span class="p">(</span><span class="s1">&#39;Нет доступа к данному объекту&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">obj</span></div></div>
+
+
+<div class="viewcode-block" id="AdCreateView"><a class="viewcode-back" href="../../../apps.main.html#apps.main.views.AdCreateView">[документация]</a><span class="k">class</span> <span class="nc">AdCreateView</span><span class="p">(</span><span class="n">AdViewMixin</span><span class="p">,</span> <span class="n">CreateView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Отобразить форму создания объявления.&quot;&quot;&quot;</span>
+
+    <span class="n">page_title</span> <span class="o">=</span> <span class="s1">&#39;Создание объявления&#39;</span>
+    <span class="n">success_url</span> <span class="o">=</span> <span class="s1">&#39;/?ad_create_success=1&#39;</span></div>
+
+
+<div class="viewcode-block" id="AdUpdateView"><a class="viewcode-back" href="../../../apps.main.html#apps.main.views.AdUpdateView">[документация]</a><span class="k">class</span> <span class="nc">AdUpdateView</span><span class="p">(</span><span class="n">AdViewMixin</span><span class="p">,</span> <span class="n">UpdateView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Отобразить форму редактирования объявления.&quot;&quot;&quot;</span>
+
+    <span class="n">page_title</span> <span class="o">=</span> <span class="s1">&#39;Редактирование объявления&#39;</span>
+    <span class="n">success_url</span> <span class="o">=</span> <span class="s1">&#39;/?ad_update_success=1&#39;</span></div>
+
+
+<div class="viewcode-block" id="SendSmsView"><a class="viewcode-back" href="../../../apps.main.html#apps.main.views.SendSmsView">[документация]</a><span class="k">class</span> <span class="nc">SendSmsView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Обрабатывает fetch запрос на отправку кода из смс&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="SendSmsView.get"><a class="viewcode-back" href="../../../apps.main.html#apps.main.views.SendSmsView.get">[документация]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">user_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">id</span>
+        <span class="n">seller</span> <span class="o">=</span> <span class="n">Seller</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span>
+        <span class="n">phone</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;phone&#39;</span><span class="p">)</span>
+        <span class="n">confirmation_code</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">9999</span><span class="p">)</span>
+        <span class="n">sms_log</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">SMSLog</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">update_or_create</span><span class="p">(</span><span class="n">seller_id</span><span class="o">=</span><span class="n">seller</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="n">confirmation_code</span><span class="p">,</span>
+            <span class="s1">&#39;sent_phone&#39;</span><span class="p">:</span> <span class="n">phone</span><span class="p">,</span>
+        <span class="p">})</span>
+        <span class="n">send_confirmation_code_by_sms</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="n">phone</span><span class="p">,</span> <span class="n">confirmation_code</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span></div></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">thinknetica_krylovilya</a></h1>
+
+
+
+
+
+
+
+
+<h3>Навигация</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Код модуля</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Ilya.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

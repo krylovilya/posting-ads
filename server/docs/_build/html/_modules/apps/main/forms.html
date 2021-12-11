@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>apps.main.forms &#8212; документация thinknetica_krylovilya </title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Исходный код apps.main.forms</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">django.forms</span> <span class="kn">import</span> <span class="n">ModelForm</span><span class="p">,</span> <span class="n">inlineformset_factory</span>
+
+<span class="kn">from</span> <span class="nn">apps.main.models</span> <span class="kn">import</span> <span class="n">Ad</span><span class="p">,</span> <span class="n">Picture</span><span class="p">,</span> <span class="n">Seller</span><span class="p">,</span> <span class="n">User</span>
+
+
+<div class="viewcode-block" id="UserForm"><a class="viewcode-back" href="../../../apps.main.html#apps.main.forms.UserForm">[документация]</a><span class="k">class</span> <span class="nc">UserForm</span><span class="p">(</span><span class="n">ModelForm</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.Meta"><a class="viewcode-back" href="../../../apps.main.html#apps.main.forms.UserForm.Meta">[документация]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">User</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;first_name&#39;</span><span class="p">,</span> <span class="s1">&#39;last_name&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="SellerForm"><a class="viewcode-back" href="../../../apps.main.html#apps.main.forms.SellerForm">[документация]</a><span class="k">class</span> <span class="nc">SellerForm</span><span class="p">(</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="n">sms_code_widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">NumberInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;hidden&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;maxlength&#39;</span><span class="p">:</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s1">&#39;pattern&#39;</span><span class="p">:</span> <span class="s2">&quot;[0-9]</span><span class="si">{4}</span><span class="s2">&quot;</span><span class="p">})</span>
+    <span class="n">sms_code</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">sms_code_widget</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Код из смс&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SellerForm.validate_phone"><a class="viewcode-back" href="../../../apps.main.html#apps.main.forms.SellerForm.validate_phone">[документация]</a>    <span class="k">def</span> <span class="nf">validate_phone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Проверка кода из смс&quot;&quot;&quot;</span>
+        <span class="n">seller</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">instance</span>
+        <span class="n">sms_log</span> <span class="o">=</span> <span class="n">seller</span><span class="o">.</span><span class="n">smslog</span>
+        <span class="n">entered_sms_code</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sms_code&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+        <span class="n">entered_phone</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;phone&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">entered_phone</span> <span class="o">!=</span> <span class="n">sms_log</span><span class="o">.</span><span class="n">sent_phone</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_error</span><span class="p">(</span><span class="s1">&#39;phone&#39;</span><span class="p">,</span> <span class="s1">&#39;Полученный телефон не совпадает с подтверждённым&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">entered_sms_code</span> <span class="ow">and</span> <span class="n">sms_log</span><span class="o">.</span><span class="n">code</span> <span class="o">!=</span> <span class="n">entered_sms_code</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_error</span><span class="p">(</span><span class="s1">&#39;phone&#39;</span><span class="p">,</span> <span class="s1">&#39;Введён неверный код&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sms_log</span><span class="o">.</span><span class="n">confirmed</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">sms_log</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="SellerForm.clean"><a class="viewcode-back" href="../../../apps.main.html#apps.main.forms.SellerForm.clean">[документация]</a>    <span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">validate_phone</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="SellerForm.Meta"><a class="viewcode-back" href="../../../apps.main.html#apps.main.forms.SellerForm.Meta">[документация]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Seller</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;itn&#39;</span><span class="p">,</span> <span class="s1">&#39;phone&#39;</span><span class="p">,</span> <span class="s1">&#39;sms_code&#39;</span><span class="p">)</span></div></div>
+
+
+<span class="n">ImageFormset</span> <span class="o">=</span> <span class="n">inlineformset_factory</span><span class="p">(</span><span class="n">parent_model</span><span class="o">=</span><span class="n">Ad</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">Picture</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;image&#39;</span><span class="p">,))</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">thinknetica_krylovilya</a></h1>
+
+
+
+
+
+
+
+
+<h3>Навигация</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Код модуля</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Ilya.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
