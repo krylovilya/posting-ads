@@ -1,0 +1,9 @@
+$ python3 manage.py dumpdata -o dump-16-12-2021.json main
+[...........................................................................]
+$ cat sqlite_clear_main.sql | python3 manage.py dbshell
+$ echo "SELECT COUNT(*) FROM main_ad" | python3 manage.py dbshell
+0
+$ python3 manage.py loaddata --app main dump-16-12-2021.json
+Installed 52 object(s) from 1 fixture(s)
+$ echo "SELECT COUNT(*) FROM main_ad" | python3 manage.py dbshell
+20
