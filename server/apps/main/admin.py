@@ -24,10 +24,21 @@ class CustomSellerAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'num_ads')
 
 
+@admin.action(description='Архивировать выбранные объявления')
+def archive(modeladmin, request, queryset):
+    queryset.update(archive=True)
+
+
+class CustomAdAdmin(admin.ModelAdmin):
+    """Добавление фильтрации и архивирование объявлений."""
+    list_filter = ('tags', 'creation_date')
+    actions = (archive,)
+
+
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, CustomFlatPageAdmin)
 
-admin.site.register(Ad)
+admin.site.register(Ad, CustomAdAdmin)
 admin.site.register(Category)
 admin.site.register(Seller, CustomSellerAdmin)
 admin.site.register(Picture)
