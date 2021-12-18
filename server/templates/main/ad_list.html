@@ -39,7 +39,7 @@
                 {% if page_obj.has_previous %}
                     <li class="page-item">
                         <a class="page-link"
-                           href="?page={{ page_obj.previous_page_number }}{{ current_tag | save_tag_in_url }}">
+                           href="?page={{ page_obj.previous_page_number }}">
                             Previous</a>
                     </li>
                 {% else %}
@@ -53,14 +53,14 @@
                         </li>
                     {% else %}
                         <li class="page-item"><a class="page-link"
-                                                 href="?page={{ i }}{{ current_tag | save_tag_in_url }}">{{ i }}</a>
+                                                 href="?page={{ i }}">{{ i }}</a>
                         </li>
                     {% endif %}
                 {% endfor %}
                 {% if page_obj.has_next %}
                     <li class="page-item">
                         <a class="page-link"
-                           href="?page={{ page_obj.next_page_number }}{{ current_tag | save_tag_in_url }}">Next</a>
+                           href="?page={{ page_obj.next_page_number }}">Next</a>
                     </li>
                 {% else %}
                     <li class="page-item disabled">
@@ -72,24 +72,24 @@
 
         <!-- tags -->
 
-        <div class="col-md-3 col-sm-12">
-            <div class="card" style="width: 18rem;">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Тэги</li>
-                    {% for tag in tags %}
-                        <li class="list-group-item"><a href="/ads/?tag={{ tag.slug }}">{{ tag }}</a>
-                            {% if current_tag == tag.slug %}
-                                <a href="/ads/">
-                                    <button type="button"
-                                            class="btn-close position-absolute top-50 end-0 translate-middle "
-                                            aria-label="Close"></button>
-                                </a>
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
+{#        <div class="col-md-3 col-sm-12">#}
+{#            <div class="card" style="width: 18rem;">#}
+{#                <ul class="list-group list-group-flush">#}
+{#                    <li class="list-group-item">Тэги</li>#}
+{#                    {% for tag in tags %}#}
+{#                        <li class="list-group-item"><a href="/ads/?tag={{ tag.slug }}">{{ tag }}</a>#}
+{#                            {% if current_tag == tag.slug %}#}
+{#                                <a href="/ads/">#}
+{#                                    <button type="button"#}
+{#                                            class="btn-close position-absolute top-50 end-0 translate-middle "#}
+{#                                            aria-label="Close"></button>#}
+{#                                </a>#}
+{#                            {% endif %}#}
+{#                        </li>#}
+{#                    {% endfor %}#}
+{#                </ul>#}
+{#            </div>#}
+{#        </div>#}
     </div>
 
     <!-- chat -->

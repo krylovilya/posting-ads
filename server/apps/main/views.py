@@ -13,7 +13,7 @@ from django.views.generic.edit import ModelFormMixin, ProcessFormView
 from constance import config
 
 from apps.main.forms import ImageFormset, SellerForm, UserForm
-from apps.main.models import Ad, Seller, SMSLog, Tag
+from apps.main.models import Ad, Seller, SMSLog
 from apps.main.tasks import send_confirmation_code_by_sms
 
 
@@ -31,20 +31,6 @@ class AdsListView(ListView):
     model = Ad
     template_name = "main/ad_list.html"
     paginate_by = 5
-
-    def get_context_data(self, *args, **kwargs):
-        kwargs.update({
-            'tags': Tag.objects.get_queryset(),
-            'current_tag': self.request.GET.get('tag', '')
-        })
-        return super().get_context_data(*args, **kwargs)
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        tag = self.request.GET.get('tag', None)
-        if tag:
-            return queryset.filter(tags__slug=tag)
-        return queryset
 
 
 @method_decorator(cache_page(60), name='dispatch')
