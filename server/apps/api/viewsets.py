@@ -15,3 +15,10 @@ class AdViewSet(ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(seller=self.request.user.seller)
+
+    def get_queryset(self):
+        queryset = Ad.objects.all()
+        seller_id = self.request.query_params.get('seller')
+        if seller_id is not None:
+            queryset = queryset.filter(seller_id=seller_id)
+        return queryset

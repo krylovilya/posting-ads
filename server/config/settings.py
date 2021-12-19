@@ -242,6 +242,13 @@ sentry_sdk.init(
     send_default_pii=True
 )
 
+# DRF
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 5,
+}
+
 # Debug toolbar settings
 
 if DEBUG:
