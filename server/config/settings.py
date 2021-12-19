@@ -29,11 +29,13 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'channels',
-    'django.contrib.sitemaps'
+    'django.contrib.sitemaps',
+    'rest_framework',
 ]
 
 LOCAL_APPS = [
     'apps.main',
+    'apps.api'
 ]
 
 INSTALLED_APPS += LOCAL_APPS
@@ -124,7 +126,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 
-STATIC_URL = '/static/'
+STATIC_URL = '/staticfiles/'
+STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
 STATICFILES_DIRS = ('static',)
 
 # Media files
