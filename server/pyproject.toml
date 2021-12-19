@@ -28,6 +28,7 @@ channels-redis = "^3.3.1"
 factory-boy = "^3.2.1"
 psycopg2-binary = "2.9.2"
 dj-database-url = "0.5.0"
+sentry-sdk = "^1.5.1"
 
 [tool.poetry.dev-dependencies]
 coveralls = "3.3.1"
