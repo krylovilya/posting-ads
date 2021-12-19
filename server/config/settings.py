@@ -46,6 +46,7 @@ MIGRATION_MODULES = {app_name: MIGRATION_PATH + app_name for app_name in LOCAL_M
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'apps.main.middleware.MobileMiddleware',
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
