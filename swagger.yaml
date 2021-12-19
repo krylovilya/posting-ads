@@ -1,0 +1,187 @@
+swagger: '2.0'
+info:
+  title: API
+  version: v1
+host: 127.0.0.1:8000
+schemes:
+  - http
+basePath: /api
+tags:
+- name: ad
+  description: CRUD операции над объявлениями
+securityDefinitions:
+  Basic:
+    type: basic
+security:
+  - Basic: []
+paths:
+  /ad/:
+    get:
+      operationId: ad_list
+      summary: Получение объявлений
+      parameters:
+        - name: limit
+          in: query
+          description: Number of results to return per page.
+          required: false
+          type: integer
+        - name: offset
+          in: query
+          description: The initial index from which to return the results.
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            required:
+              - count
+              - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/Ad'
+      tags:
+        - ad
+    post:
+      operationId: ad_create
+      summary: Создание объявлений
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Ad'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Ad'
+      tags:
+        - ad
+    parameters: []
+  /ad/{id}/:
+    get:
+      operationId: ad_read
+      summary: Получение одного объявления
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Ad'
+      tags:
+        - ad
+    put:
+      operationId: ad_update
+      summary: Редактирование объявления (все поля)
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Ad'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Ad'
+      tags:
+        - ad
+    patch:
+      operationId: ad_partial_update
+      summary: Редактирование объявления (некоторые поля)
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Ad'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Ad'
+      tags:
+        - ad
+    delete:
+      operationId: ad_delete
+      summary: Удаление объявления
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - ad
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this объявление.
+        required: true
+        type: integer
+definitions:
+  Ad:
+    required:
+      - title
+      - category
+      - seller
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      creation_date:
+        title: Дата создания
+        type: string
+        format: date-time
+        readOnly: true
+      update_date:
+        title: Дата изменения
+        type: string
+        format: date-time
+        readOnly: true
+      title:
+        title: Заголовок объявления
+        type: string
+        maxLength: 128
+        minLength: 1
+      description:
+        title: Описание объявления
+        type: string
+        maxLength: 2048
+        minLength: 1
+        x-nullable: true
+      tags:
+        type: array
+        items:
+          title: Tags
+          type: string
+          maxLength: 10
+        x-nullable: true
+      price:
+        title: Цена
+        type: integer
+        maximum: 2147483647
+        minimum: 0
+      archive:
+        title: В архиве
+        type: boolean
+      category:
+        title: Категория
+        type: integer
+      seller:
+        title: Продавец
+        type: integer
