@@ -4,6 +4,22 @@
 
 {% block title %}{{ object.title }}{% endblock %}
 
+{% block head %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "{{ object.title }}",
+      "author": {
+        "@type": "Person",
+        "name": "{{ object.seller.user.username }}"
+      },
+      "datePublished": "{{ object.update_date }}",
+      "description": "{{ object.description }}",
+    }
+    </script>
+{% endblock %}
+
 {% block content %}
 
     <h1 class="display-5">{{ object.title }}</h1>
