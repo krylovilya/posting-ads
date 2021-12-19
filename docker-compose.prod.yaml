@@ -1,0 +1,60 @@
+version: "3.9"
+services:
+    server:
+      restart: always
+      build:
+        context: ./
+        dockerfile: ./Dockerfile
+      container_name: django
+      command: gunicorn config.wsgi -c ./config/gunicorn.py
+      volumes:
+        - ./server:/server
+        - ./server/media:/server/media
+      depends_on:
+        - db
+        - redis
+      environment: &server_env
+        DEBUG: 'False'
+        DATABASE_URL: 'postgres://postgres:postgres@db:5432/postgres'
+        SECRET_KEY: ${secret_KEY}
+        TWILIO_ACCOUNT_SID: ${TWILIO_ACCOUNT_SID}
+        TWILIO_AUTH_TOKEN: ${TWILIO_AUTH_TOKEN}
+        TWILIO_PHONE_NUMBER: ${TWILIO_PHONE_NUMBER}
+        SENTRY_PUBLIC_KEY: ${SENTRY_PUBLIC_KEY}
+
+    db:
+      image: postgres:14.1-alpine
+      container_name: postgres
+      environment:
+        POSTGRES_DB: postgres
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+
+    redis:
+      image: redis:6.2
+      command: redis-server
+
+    celery:
+      build:
+        context: ./
+        dockerfile: ./Dockerfile
+      container_name: celery
+      command: bash -c "cd /server && python -m celery -A config.celery worker --loglevel=info"
+      volumes:
+        - ./server:/server
+      depends_on:
+        - server
+      environment: *server_env
+
+    nginx:
+      build:
+        context: ./
+        dockerfile: ./nginx/Dockerfile
+      depends_on:
+        - server
+      ports:
+        - "80:80"
+      volumes:
+        - ./server/media:/nginx/media
+        - ./server:/server
+      environment: *server_env
