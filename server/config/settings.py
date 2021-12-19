@@ -238,3 +238,16 @@ sentry_sdk.init(
 
     send_default_pii=True
 )
+
+# Debug toolbar settings
+
+if DEBUG:
+    def show_toolbar(request):
+        from django.conf import settings
+        return settings.DEBUG
+
+    DEBUG_TOOLBAR_CONFIG = {
+        'SHOW_TOOLBAR_CALLBACK': show_toolbar,
+    }
+    MIDDLEWARE = ['debug_toolbar.middleware.DebugToolbarMiddleware'] + MIDDLEWARE
+    INSTALLED_APPS += ['debug_toolbar']
