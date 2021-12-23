@@ -3,6 +3,8 @@ from random import randint
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ValidationError
 from django.http import Http404, HttpResponse, HttpResponseRedirect
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from django.views.generic.base import TemplateView, View
 from django.views.generic.edit import ModelFormMixin, ProcessFormView
@@ -21,6 +23,7 @@ class IndexView(TemplateView):
     extra_context = {'turn_on_block': config.MAINTENANCE_MODE}
 
 
+@method_decorator(cache_page(60 * 15), name='dispatch')
 class AdsListView(ListView):
     """Список объявлений."""
 
@@ -43,6 +46,7 @@ class AdsListView(ListView):
         return queryset
 
 
+@method_decorator(cache_page(60 * 15), name='dispatch')
 class AdDetailView(DetailView):
     """Детальная информация об объявлении."""
 
