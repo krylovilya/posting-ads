@@ -6,4 +6,4 @@ class MainConfig(AppConfig):
     default = True
 
     def ready(self):
-        pass
+        import apps.main.signals
