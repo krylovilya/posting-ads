@@ -1,6 +1,7 @@
-from random import randint
+from random import randint, uniform
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.cache import cache
 from django.core.exceptions import ValidationError
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.utils.decorators import method_decorator
@@ -23,7 +24,7 @@ class IndexView(TemplateView):
     extra_context = {'turn_on_block': config.MAINTENANCE_MODE}
 
 
-@method_decorator(cache_page(60 * 15), name='dispatch')
+@method_decorator(cache_page(60), name='dispatch')
 class AdsListView(ListView):
     """Список объявлений."""
 
@@ -46,12 +47,20 @@ class AdsListView(ListView):
         return queryset
 
 
-@method_decorator(cache_page(60 * 15), name='dispatch')
+@method_decorator(cache_page(60), name='dispatch')
 class AdDetailView(DetailView):
     """Детальная информация об объявлении."""
 
     model = Ad
     template_name = "main/ad_detail.html"
+
+    def get_context_data(self, **kwargs):
+        price_factor = cache.get('price_factor')
+        if price_factor is None:
+            price_factor = round(uniform(0.8, 1.2), 1)
+            cache.set('price_factor', price_factor, 60)
+        kwargs['price_factor'] = price_factor
+        return super().get_context_data(**kwargs)
 
 
 class SellerUpdateView(LoginRequiredMixin, UpdateView):

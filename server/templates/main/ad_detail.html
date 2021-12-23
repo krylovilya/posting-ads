@@ -1,5 +1,6 @@
 {% extends "main/base.html" %}
 {% load thumbnail %}
+{% load main_tags_and_filters %}
 
 {% block title %}{{ object.title }}{% endblock %}
 
@@ -7,8 +8,11 @@
 
     <h1 class="display-5">{{ object.title }}</h1>
     <p>{{ object.category }}</p>
-    <p>{{ object.price }}</p>
-
+    {% if object.price %}
+        <p>{% apply_price_factor object.price price_factor as price %}{{ price | floatformat:"0" }}</p>
+    {% else %}
+        <p>Цена не указана</p>
+    {% endif %}
     <!-- Ad pictures -->
     {% if object.pictures.count %}
         <h1 class="fw-light text-center text-lg-start mt-4 mb-0">Изображения</h1>

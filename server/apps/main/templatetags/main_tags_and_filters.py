@@ -26,3 +26,9 @@ def save_tag_in_url(tag_name: str) -> str:
     if not tag_name:
         return ''
     return f'&tag={tag_name}'
+
+
+@register.simple_tag
+def apply_price_factor(price: int, price_factor: int) -> int:
+    """Умножает цену товара на коэффициент"""
+    return price * price_factor
