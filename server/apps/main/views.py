@@ -69,7 +69,6 @@ class SellerUpdateView(LoginRequiredMixin, UpdateView):
     model = Seller
     template_name = "main/seller_update.html"
     success_url = '/?seller_update_success=1'
-    login_url = ' /accounts/login/'
     form_class = SellerForm
 
     def get_object(self, queryset=None):
@@ -103,7 +102,6 @@ class AdViewMixin(ModelFormMixin, LoginRequiredMixin, ProcessFormView):
     model = Ad
     fields = ('title', 'description', 'category', 'tags', 'price')
     template_name = 'main/ad_create.html'
-    login_url = ' /accounts/login/'
     page_title = ''
 
     def form_valid(self, form):
