@@ -15,7 +15,7 @@ def send_email_to_subscribers_task(ad: dict[str, str]):
     subject = f"New Ad {ad['ad_title']}"
     site_url = Site.objects.get_current().domain
     body = render_to_string('account/email/email_new_ad.html', ad | {'site_url': site_url})
-    emails = (user.email for user in users if user.email)
+    emails = [user.email for user in users if user.email]
     msg = EmailMessage(
         subject=subject,
         body=body,
