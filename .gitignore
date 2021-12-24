@@ -4,6 +4,7 @@
 
 .idea
 static/
+staticfiles/
 
 ### Django ###
 *.log
