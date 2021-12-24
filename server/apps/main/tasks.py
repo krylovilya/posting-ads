@@ -47,7 +47,7 @@ def send_digest_task():
 
 
 @app.task()
-def send_confirmation_code_by_sms(phone, confirmation_code):
+def send_confirmation_code_by_sms(phone: str, confirmation_code: int):
     """Celery task. Отправляет смс с кодом"""
     account_sid = settings.TWILIO_ACCOUNT_SID
     auth_token = settings.TWILIO_AUTH_TOKEN

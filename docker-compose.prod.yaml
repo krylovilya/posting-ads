@@ -39,7 +39,7 @@ services:
         context: ./
         dockerfile: ./Dockerfile
       container_name: celery
-      command: bash -c "cd /server && python -m celery -A config.celery worker --loglevel=info"
+      entrypoint: "entrypoint.celery.sh"
       volumes:
         - ./server:/server
       depends_on:

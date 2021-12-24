@@ -87,8 +87,6 @@ class Ad(BaseModel):
     description = models.CharField(verbose_name='описание объявления', max_length=2048, null=True)
     category = models.ForeignKey(to=Category, verbose_name='категория', on_delete=models.CASCADE, related_name='ads')
     seller = models.ForeignKey(to=Seller, verbose_name='продавец', on_delete=models.CASCADE, related_name='ads')
-    # поле tags(ManyToManyField) временно удалено для изучения ArrayField
-    # tags = models.ManyToManyField(to=Tag, verbose_name='тэги', related_name='ads')
     tags = ArrayField(models.CharField(max_length=10, blank=True), verbose_name='тэги', null=True)
     price = models.PositiveIntegerField(verbose_name='цена', default=0)
     archive = models.BooleanField(verbose_name='в архиве', default=False)
