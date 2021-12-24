@@ -88,6 +88,7 @@ def set_up():
 
 @pytest.mark.django_db
 def test_index_view(set_up):
+    """Тест главной страницы."""
     response = set_up['client'].get('/')
     assert response.status_code == 200
     assert 'main/error_page.html' not in (t.name for t in response.templates)
@@ -95,6 +96,7 @@ def test_index_view(set_up):
 
 @pytest.mark.django_db
 def test_ads_list_view(set_up):
+    """Тест страницы со списком объявлений."""
     response = set_up['client'].get('/ads/')
     assert response.status_code == 200
     assert 'main/error_page.html' not in (t.name for t in response.templates)
@@ -102,6 +104,7 @@ def test_ads_list_view(set_up):
 
 @pytest.mark.django_db
 def test_ad_detail_view(set_up):
+    """Тест страницы с описанием объявления."""
     ad = set_up['ad']
     response = set_up['client'].get(f'/ads/{ad.id}/')
     assert response.status_code == 200
@@ -110,6 +113,7 @@ def test_ad_detail_view(set_up):
 
 @pytest.mark.django_db
 def test_seller_update_view(set_up):
+    """Тест страницы с обновлением информации о продавце."""
     response = set_up['client'].get('/accounts/seller/')
     assert response.status_code == 200
     assert 'main/error_page.html' not in (t.name for t in response.templates)
@@ -117,6 +121,7 @@ def test_seller_update_view(set_up):
 
 @pytest.mark.django_db
 def test_seller_update_view_anonymous(set_up):
+    """Тест анонимного доступа к странице с обновлением информации о продавце."""
     client = set_up['client']
     client.logout()
     response = client.get('/accounts/seller/')
@@ -127,6 +132,7 @@ def test_seller_update_view_anonymous(set_up):
 
 @pytest.mark.django_db
 def test_ad_create_view(set_up):
+    """Тест страницы с добавлением объявления."""
     response = set_up['client'].get('/ads/add/')
     assert response.status_code == 200
     assert 'main/error_page.html' not in (t.name for t in response.templates)
@@ -134,6 +140,7 @@ def test_ad_create_view(set_up):
 
 @pytest.mark.django_db
 def test_ad_update_view(set_up):
+    """Тест страницы с обновлением объявления."""
     ad = set_up['ad']
     response = set_up['client'].get(f'/ads/{ad.id}/edit/')
     assert response.status_code == 200
@@ -142,6 +149,7 @@ def test_ad_update_view(set_up):
 
 @pytest.mark.django_db
 def test_ad_update_view_anonymous(set_up):
+    """Тест анонимного доступа к странице с добавлением объявления."""
     client = set_up['client']
     client.logout()
     ad = set_up['ad']
@@ -151,6 +159,7 @@ def test_ad_update_view_anonymous(set_up):
 
 
 def test_robots_txt_get():
+    """Тест get запроса к файлу robots.txt."""
     client = Client()
     response = client.get("/robots.txt")
     assert response.status_code == 200
@@ -160,6 +169,7 @@ def test_robots_txt_get():
 
 
 def test_robots_txt_post_disallowed():
+    """Тест post запроса к файлу robots.txt."""
     client = Client()
     response = client.post("/robots.txt")
     assert response.status_code == 405
