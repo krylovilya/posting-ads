@@ -69,6 +69,9 @@
                 {% endif %}
             </ul>
         </div>
+
+        <!-- tags -->
+
         <div class="col-md-3 col-sm-12">
             <div class="card" style="width: 18rem;">
                 <ul class="list-group list-group-flush">
@@ -88,4 +91,47 @@
             </div>
         </div>
     </div>
+
+    <!-- chat -->
+    <div class="w-25" id="chat_placeholder"></div>
+    <div class="row g-3">
+        <div class="col-auto">
+            <label for="chat_field" class="visually-hidden">Search ad</label>
+            <input class="form-control" id="chat_field" placeholder="Search ad">
+        </div>
+        <div class="col-auto">
+            <button type="submit" id="chat_send_button" class="btn btn-primary mb-3">Send</button>
+        </div>
+    </div>
+
+    <script>
+        let socket = new WebSocket('ws://' + window.location.host + '/chat/');
+        let chat_field = document.getElementById('chat_field'),
+            chat_send_button = document.getElementById('chat_send_button'),
+            alertPlaceholder = document.getElementById('chat_placeholder')
+
+        function alert(message, type) {
+            let wrapper = document.createElement('div')
+            wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+            alertPlaceholder.append(wrapper)
+        }
+
+        socket.onmessage = function (e) {
+            if (e.data === "Not found") {
+                alert(e.data, 'danger')
+            } else {
+                let data_link = document.createElement('a');
+                let data = JSON.parse(e.data)
+                data_link.href = "/ads/" + data['id'] + "/";
+                data_link.innerText = data['title'];
+                alert(data_link.outerHTML, 'success');
+            }
+        };
+
+        chat_send_button.addEventListener('click', function () {
+            socket.send(chat_field.value)
+        });
+
+    </script>
+
 {% endblock %}

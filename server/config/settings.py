@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'channels'
 ]
 
 LOCAL_APPS = [
@@ -181,4 +182,17 @@ CACHES = {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
     }
+}
+
+# Конфигурация Channels
+
+ASGI_APPLICATION = 'config.asgi.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": ('redis://127.0.0.1:6379/2?encoding=utf-8',),
+            "symmetric_encryption_keys": [SECRET_KEY],
+        },
+    },
 }
