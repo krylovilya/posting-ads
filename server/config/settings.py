@@ -1,5 +1,7 @@
 import os
 from pathlib import Path
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 import dj_database_url
 
@@ -203,3 +205,35 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+# logging
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+        }
+    },
+    'loggers': {
+        'root': {
+            'handlers': ['mail_admins'],
+            'level': 'WARNING',
+        },
+    },
+}
+
+# sentry
+
+SENTRY_PUBLIC_KEY = os.environ.get('SENTRY_PUBLIC_KEY')
+
+sentry_sdk.init(
+    dsn=f"https://{SENTRY_PUBLIC_KEY}.ingest.sentry.io/6113157",
+    integrations=[DjangoIntegration()],
+
+    traces_sample_rate=1.0,
+
+    send_default_pii=True
+)
