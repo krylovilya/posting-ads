@@ -26,7 +26,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'channels'
+    'channels',
+    'django.contrib.sitemaps'
 ]
 
 LOCAL_APPS = [

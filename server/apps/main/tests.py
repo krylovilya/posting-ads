@@ -148,3 +148,18 @@ def test_ad_update_view_anonymous(set_up):
     response = client.get(f'/ads/{ad.id}/edit/')
     assert response.url == f'/accounts/login/?next=/ads/{ad.id}/edit/'
     assert response.status_code == 302
+
+
+def test_robots_txt_get():
+    client = Client()
+    response = client.get("/robots.txt")
+    assert response.status_code == 200
+    assert response["content-type"] == "text/plain"
+    lines = response.content.decode().splitlines()
+    assert lines[0] == "User-Agent: *"
+
+
+def test_robots_txt_post_disallowed():
+    client = Client()
+    response = client.post("/robots.txt")
+    assert response.status_code == 405

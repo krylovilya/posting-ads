@@ -24,6 +24,17 @@ class IndexView(TemplateView):
     extra_context = {'turn_on_block': config.MAINTENANCE_MODE}
 
 
+class RobotsTxtView(TemplateView):
+    """Генерация robots.txt"""
+
+    def get(self, request, **kwargs):
+        lines = [
+            "User-Agent: *",
+            "Disallow: /admin/",
+        ]
+        return HttpResponse("\n".join(lines), content_type="text/plain")
+
+
 @method_decorator(cache_page(60), name='dispatch')
 class AdsListView(ListView):
     """Список объявлений."""
